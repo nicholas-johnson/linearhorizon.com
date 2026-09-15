@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import GridFrame from '../components/diagrams/GridFrame.astro';
-import { founder, site } from '../data/site';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import GridFrame from "../components/diagrams/GridFrame.astro";
+import { founder, site } from "../data/site";
 ---
 
 <BaseLayout
@@ -10,34 +10,56 @@ import { founder, site } from '../data/site';
   description="Linear Horizon is a specialist applied AI engineering company: we teach AI, design it, build it and provide the technology to run it."
 >
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
-    <PageIntro kicker="06 / About" title="A specialist applied AI engineering company.">
+    <PageIntro
+      kicker="06 / About"
+      title="A specialist applied AI engineering company."
+    >
       <p>
-        Linear Horizon helps organisations understand, design and deploy artificial intelligence — through training, consultancy, production engineering and our own agentic products.
+        Linear Horizon helps organisations understand, design and deploy
+        artificial intelligence — through training, consultancy, production
+        engineering and our own agentic products.
       </p>
     </PageIntro>
 
-    <div class="mt-14 max-w-xl space-y-6 text-[1.05rem] leading-relaxed text-muted">
+    <div
+      class="mt-14 max-w-xl space-y-6 text-[1.05rem] leading-relaxed text-muted"
+    >
       <p class="text-ink">
         {site.spine}
       </p>
       <p>
-        {site.why} The same practice trains your people, designs the system, delivers it into production, and provides reusable technology where the problem already has a product shape. You can engage at any point.
+        {site.why} The same practice trains your people, designs the system, delivers
+        it into production, and provides reusable technology where the problem already
+        has a product shape. You can engage at any point.
       </p>
       <p>
-        Services — Train, Advise, Build — are how we work closely with you. Products — Platform, Stack, Wargame, Funnel and Callcenter — are technology we have already built, so not every engagement starts from scratch.
+        Services — Train, Advise, Build — are how we work closely with you.
+        Products — Platform, Stack, Wargame, Funnel and Callcenter — are
+        technology we have already built, so not every engagement starts from
+        scratch.
       </p>
       <p>
-        We work with senior engineers, architects, and the leaders who have to make decisions they will still own in two years.
+        We work with senior engineers, architects, and the leaders who have to
+        make decisions they will still own in two years.
       </p>
     </div>
 
     <div class="mt-16 max-w-xl">
       <GridFrame class="bg-paper p-6 md:p-8">
-        <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Principal</p>
-        <h2 class="mt-4 text-[1.15rem] font-medium tracking-tight">{founder.name}</h2>
-        <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">{founder.role}</p>
+        <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+          Principal
+        </p>
+        <h2 class="mt-4 text-[1.15rem] font-medium tracking-tight">
+          {founder.name}
+        </h2>
+        <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">
+          {founder.role}
+        </p>
         <p class="mt-6 text-[0.98rem] leading-relaxed text-muted">
-          He has a degree in Artificial Intelligence and around twenty years delivering professional technology training — hundreds of technical courses for engineering teams and large organisations — alongside senior and principal engineering and architecture, including hands-on production AI.
+          Nicholas has a BSc in Artificial Intelligence and over twenty five
+          years active coding, technical workshops and professional technology
+          training. He has delivered hundreds of technical courses for
+          engineering teams worldwide.
         </p>
         <p class="mt-6">
           <a

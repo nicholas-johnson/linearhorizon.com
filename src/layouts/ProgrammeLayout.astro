@@ -1,16 +1,16 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import CtaLink from '../components/CtaLink.astro';
-import { getCollection } from 'astro:content';
-import { founder, site } from '../data/site';
-import { labIndexHref, labModuleHref } from '../data/labs';
+import BaseLayout from "./BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import CtaLink from "../components/CtaLink.astro";
+import { getCollection } from "astro:content";
+import { founder, site } from "../data/site";
+import { labIndexHref, labModuleHref } from "../data/labs";
 import {
   type Programme,
   formatPrice,
   programmeContactHref,
-} from '../data/programmes';
-import { findLabModule, modulesForProgramme } from '../lib/labs';
+} from "../data/programmes";
+import { findLabModule, modulesForProgramme } from "../lib/labs";
 
 interface Props {
   programme: Programme;
@@ -22,56 +22,59 @@ const contactUrl = new URL(contactHref, Astro.site).toString();
 const pageUrl = new URL(`/training/${programme.slug}/`, Astro.site).toString();
 const labsHref = labIndexHref(programme.slug);
 const price = formatPrice(programme.priceFrom);
-const labs = await getCollection('labs');
+const labs = await getCollection("labs");
 const labModules = modulesForProgramme(labs, programme.slug);
 
 const days = programme.duration.match(/(\d+)\s*day/i);
 const workload = days ? `P${days[1]}D` : undefined;
 
 const offer = {
-  '@type': 'Offer',
+  "@type": "Offer",
   price: programme.priceFrom,
   priceCurrency: programme.currency,
-  availability: 'https://schema.org/InStock',
+  availability: "https://schema.org/InStock",
   url: contactUrl,
 };
 
 const courseLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Course',
+  "@context": "https://schema.org",
+  "@type": "Course",
   name: programme.title,
   description: programme.description,
   url: pageUrl,
   provider: {
-    '@type': 'Organization',
-    '@id': `${site.url}/#organisation`,
+    "@type": "Organization",
+    "@id": `${site.url}/#organisation`,
     name: site.name,
     url: site.url,
   },
   offers: offer,
   hasPart: labModules.map((lab) => ({
-    '@type': 'LearningResource',
+    "@type": "LearningResource",
     name: lab.data.title,
-    url: new URL(`${labModuleHref(programme.slug, lab.data.moduleSlug)}/`, Astro.site).toString(),
-    learningResourceType: 'Module',
+    url: new URL(
+      `${labModuleHref(programme.slug, lab.data.moduleSlug)}/`,
+      Astro.site,
+    ).toString(),
+    learningResourceType: "Module",
   })),
   hasCourseInstance: [
     {
-      '@type': 'CourseInstance',
-      courseMode: 'Onsite',
+      "@type": "CourseInstance",
+      courseMode: "Onsite",
       ...(workload ? { courseWorkload: workload } : {}),
       location: {
-        '@type': 'Place',
-        name: 'Client site',
-        address: { '@type': 'PostalAddress', addressCountry: 'GB' },
+        "@type": "Place",
+        name: "Client site",
+        address: { "@type": "PostalAddress", addressCountry: "GB" },
       },
       offers: offer,
     },
     {
-      '@type': 'CourseInstance',
-      courseMode: 'Online',
+      "@type": "CourseInstance",
+      courseMode: "Online",
       ...(workload ? { courseWorkload: workload } : {}),
-      location: { '@type': 'VirtualLocation', url: pageUrl },
+      location: { "@type": "VirtualLocation", url: pageUrl },
       offers: offer,
     },
   ],
@@ -79,7 +82,12 @@ const courseLd = {
 ---
 
 <BaseLayout title={programme.seoTitle} description={programme.description}>
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(courseLd)} />
+  <script
+    slot="head"
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(courseLd)}
+  />
 
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
     <PageIntro kicker={programme.kicker} title={programme.title}>
@@ -88,40 +96,52 @@ const courseLd = {
 
     <p class="mt-10 font-mono text-[11px] tracking-[0.14em] text-muted">
       {programme.duration}
-      {' · '}
+      {" · "}
       {programme.capacity}
-      {' · '}
+      {" · "}
       {programme.format}
-      {' · '}
+      {" · "}
       From {price}
     </p>
 
     <p class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
       <CtaLink href={contactHref}>Talk to us</CtaLink>
-      <CtaLink href={labsHref} variant="secondary">Open the lab handbook</CtaLink>
+      <CtaLink href={labsHref} variant="secondary"
+        >Open the lab handbook</CtaLink
+      >
     </p>
 
-    <div class="mt-16 grid gap-10 border-t border-ink/20 pt-10 md:grid-cols-2 md:gap-16">
+    <div
+      class="mt-16 grid gap-10 border-t border-ink/20 pt-10 md:grid-cols-2 md:gap-16"
+    >
       <div>
         <h2 class="text-[1.15rem] font-medium tracking-tight">Who it is for</h2>
-        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">{programme.who}</p>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+          {programme.who}
+        </p>
       </div>
       <div>
         <h2 class="text-[1.15rem] font-medium tracking-tight">Who it is not</h2>
-        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">{programme.whoNot}</p>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+          {programme.whoNot}
+        </p>
       </div>
     </div>
 
     <section class="mt-16">
-      <h2 class="text-[1.15rem] font-medium tracking-tight">What they will be able to do</h2>
+      <h2 class="text-[1.15rem] font-medium tracking-tight">
+        What they will be able to do
+      </h2>
       <ol class="mt-8 border-t border-hairline">
         {
           programme.outcomes.map((item, index) => (
             <li class="grid grid-cols-[auto_1fr] gap-4 border-b border-hairline py-5 md:grid-cols-[5.5rem_1fr] md:gap-10">
               <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
-                {String(index + 1).padStart(2, '0')}
+                {String(index + 1).padStart(2, "0")}
               </span>
-              <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{item}</p>
+              <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">
+                {item}
+              </p>
             </li>
           ))
         }
@@ -133,28 +153,39 @@ const courseLd = {
       {
         programme.days.map((day) => (
           <div class="mt-10">
-            <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Day {day.id}</p>
-            <h3 class="mt-2 text-[1.15rem] font-medium tracking-tight">{day.title}</h3>
+            <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+              Day {day.id}
+            </p>
+            <h3 class="mt-2 text-[1.15rem] font-medium tracking-tight">
+              {day.title}
+            </h3>
             <ol class="mt-6 border-t border-hairline">
               {day.modules.map((mod) => {
                 const lab = findLabModule(labs, programme.slug, mod.id);
                 return (
-                <li class="grid grid-cols-1 gap-2 border-b border-hairline py-6 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
-                  <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{mod.id}</span>
-                  <h4 class="text-[1.05rem] font-medium tracking-tight">
-                    {lab ? (
-                      <a
-                        href={labModuleHref(programme.slug, lab.data.moduleSlug)}
-                        class="text-ink no-underline hover:text-cobalt"
-                      >
-                        {mod.title}
-                      </a>
-                    ) : (
-                      mod.title
-                    )}
-                  </h4>
-                  <p class="max-w-2xl text-[0.98rem] leading-relaxed text-muted">{mod.body}</p>
-                </li>
+                  <li class="grid grid-cols-1 gap-2 border-b border-hairline py-6 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+                    <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                      {mod.id}
+                    </span>
+                    <h4 class="text-[1.05rem] font-medium tracking-tight">
+                      {lab ? (
+                        <a
+                          href={labModuleHref(
+                            programme.slug,
+                            lab.data.moduleSlug,
+                          )}
+                          class="text-ink no-underline hover:text-cobalt"
+                        >
+                          {mod.title}
+                        </a>
+                      ) : (
+                        mod.title
+                      )}
+                    </h4>
+                    <p class="max-w-2xl text-[0.98rem] leading-relaxed text-muted">
+                      {mod.body}
+                    </p>
+                  </li>
                 );
               })}
             </ol>
@@ -164,30 +195,41 @@ const courseLd = {
     </section>
 
     <section class="mt-16 max-w-xl">
-      <h2 class="text-[1.15rem] font-medium tracking-tight">How it is taught</h2>
-      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{programme.taught}</p>
+      <h2 class="text-[1.15rem] font-medium tracking-tight">
+        How it is taught
+      </h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        {programme.taught}
+      </p>
     </section>
 
     <section class="mt-16 max-w-xl border-t border-hairline pt-10">
-      <h2 class="text-[1.15rem] font-medium tracking-tight">Delivery and price</h2>
+      <h2 class="text-[1.15rem] font-medium tracking-tight">
+        Delivery and price
+      </h2>
       <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-        From {price} for {programme.capacity.toLowerCase()}, {programme.format.toLowerCase()}.
-        Talk to us to confirm dates, location, and any tailoring.
+        From {price} for {programme.capacity.toLowerCase()}, {
+          programme.format.toLowerCase()
+        }. Talk to us to confirm dates, location, and any tailoring.
       </p>
     </section>
 
     <section class="mt-16 max-w-xl">
       <h2 class="text-[1.15rem] font-medium tracking-tight">Instructor</h2>
       <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-        {founder.name}, {founder.role}. He has a degree in Artificial Intelligence and around twenty years of professional technology training.
-        {' '}
+        {founder.name}, {founder.role}. Nicholas has a BSc in Artificial
+        Intelligence and over twenty five years of professional technology
+        training.
+        {" "}
         <a href="/about" class="text-ink hover:text-cobalt">About</a>.
       </p>
     </section>
 
     <p class="mt-16 flex flex-wrap gap-x-8 gap-y-3">
       <CtaLink href={contactHref}>Talk to us</CtaLink>
-      <CtaLink href={labsHref} variant="secondary">Open the lab handbook</CtaLink>
+      <CtaLink href={labsHref} variant="secondary"
+        >Open the lab handbook</CtaLink
+      >
     </p>
   </article>
 </BaseLayout>

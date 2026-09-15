@@ -1,16 +1,16 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import CtaLink from '../components/CtaLink.astro';
-import { founder, site } from '../data/site';
-import { deliveryOptions } from '../data/courses/catalogue';
+import BaseLayout from "./BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import CtaLink from "../components/CtaLink.astro";
+import { founder, site } from "../data/site";
+import { deliveryOptions } from "../data/courses/catalogue";
 import {
   type Course,
   courseContactHref,
   getCategory,
   relatedCourses,
   courseHref,
-} from '../data/courses';
+} from "../data/courses";
 
 interface Props {
   course: Course;
@@ -27,7 +27,7 @@ const overviewParagraphs = course.overview.split(/\n\n/);
 // Convert a human duration ("2 days", "Half day") to an ISO 8601 workload.
 function toWorkload(duration: string): string | undefined {
   const text = duration.toLowerCase();
-  if (text.includes('half')) return 'PT4H';
+  if (text.includes("half")) return "PT4H";
   const days = text.match(/(\d+)\s*day/);
   if (days) return `P${days[1]}D`;
   const hours = text.match(/(\d+)\s*hour/);
@@ -38,14 +38,14 @@ function toWorkload(duration: string): string | undefined {
 const workload = toWorkload(course.duration);
 
 const courseLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Course',
+  "@context": "https://schema.org",
+  "@type": "Course",
   name: course.title,
   description: course.shortDescription,
   url: pageUrl,
   provider: {
-    '@type': 'Organization',
-    '@id': `${site.url}/#organisation`,
+    "@type": "Organization",
+    "@id": `${site.url}/#organisation`,
     name: site.name,
     url: site.url,
   },
@@ -53,30 +53,30 @@ const courseLd = {
   timeRequired: workload ?? course.duration,
   hasCourseInstance: [
     {
-      '@type': 'CourseInstance',
-      courseMode: 'Onsite',
+      "@type": "CourseInstance",
+      courseMode: "Onsite",
       ...(workload ? { courseWorkload: workload } : {}),
       location: {
-        '@type': 'Place',
-        name: 'Client site',
-        address: { '@type': 'PostalAddress', addressCountry: 'GB' },
+        "@type": "Place",
+        name: "Client site",
+        address: { "@type": "PostalAddress", addressCountry: "GB" },
       },
       offers: {
-        '@type': 'Offer',
-        category: 'Private corporate training',
-        availability: 'https://schema.org/InStock',
+        "@type": "Offer",
+        category: "Private corporate training",
+        availability: "https://schema.org/InStock",
         url: contactUrl,
       },
     },
     {
-      '@type': 'CourseInstance',
-      courseMode: 'Online',
+      "@type": "CourseInstance",
+      courseMode: "Online",
       ...(workload ? { courseWorkload: workload } : {}),
-      location: { '@type': 'VirtualLocation', url: pageUrl },
+      location: { "@type": "VirtualLocation", url: pageUrl },
       offers: {
-        '@type': 'Offer',
-        category: 'Private corporate training',
-        availability: 'https://schema.org/InStock',
+        "@type": "Offer",
+        category: "Private corporate training",
+        availability: "https://schema.org/InStock",
         url: contactUrl,
       },
     },
@@ -84,16 +84,28 @@ const courseLd = {
 };
 
 const breadcrumbLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Training', item: `${site.url}/training/` },
+    { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Training",
+      item: `${site.url}/training/`,
+    },
     ...(category
-      ? [{ '@type': 'ListItem', position: 3, name: category.title, item: `${site.url}/training#${category.id}` }]
+      ? [
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: category.title,
+            item: `${site.url}/training#${category.id}`,
+          },
+        ]
       : []),
     {
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: category ? 4 : 3,
       name: course.title,
       item: pageUrl,
@@ -103,17 +115,32 @@ const breadcrumbLd = {
 ---
 
 <BaseLayout title={course.title} description={course.shortDescription}>
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(courseLd)} />
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  <script
+    slot="head"
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(courseLd)}
+  />
+  <script
+    slot="head"
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbLd)}
+  />
 
   <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
     <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
-      <a href="/training" class="text-cobalt no-underline hover:text-ink">Training</a>
+      <a href="/training" class="text-cobalt no-underline hover:text-ink"
+        >Training</a
+      >
       {
         category && (
           <>
-            {' / '}
-            <a href={`/training#${category.id}`} class="text-cobalt no-underline hover:text-ink">
+            {" / "}
+            <a
+              href={`/training#${category.id}`}
+              class="text-cobalt no-underline hover:text-ink"
+            >
               {category.title}
             </a>
           </>
@@ -121,16 +148,20 @@ const breadcrumbLd = {
       }
     </p>
 
-    <PageIntro kicker={`${course.level} · ${course.duration}`} title={course.title} class="mt-6">
+    <PageIntro
+      kicker={`${course.level} · ${course.duration}`}
+      title={course.title}
+      class="mt-6"
+    >
       <p>{course.shortDescription}</p>
     </PageIntro>
 
     <p class="mt-10 font-mono text-[11px] tracking-[0.14em] text-muted">
       {course.duration}
-      {' · '}
+      {" · "}
       {course.level}
       {category && ` · ${category.title}`}
-      {' · '}
+      {" · "}
       {course.audienceLabel}
     </p>
 
@@ -145,10 +176,14 @@ const breadcrumbLd = {
       </div>
     </section>
 
-    <div class="mt-16 grid gap-10 border-t border-ink/20 pt-10 md:grid-cols-2 md:gap-16">
+    <div
+      class="mt-16 grid gap-10 border-t border-ink/20 pt-10 md:grid-cols-2 md:gap-16"
+    >
       <div>
         <h2 class="text-[1.15rem] font-medium tracking-tight">Audience</h2>
-        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">{course.audience}</p>
+        <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+          {course.audience}
+        </p>
       </div>
       <div>
         <h2 class="text-[1.15rem] font-medium tracking-tight">Prerequisites</h2>
@@ -160,24 +195,32 @@ const breadcrumbLd = {
 
     <section class="mt-16 max-w-2xl">
       <h2 class="text-[1.15rem] font-medium tracking-tight">Duration</h2>
-      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{course.duration}</p>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        {course.duration}
+      </p>
       {
         course.durationNote && (
-          <p class="mt-3 text-[1.02rem] leading-relaxed text-muted">{course.durationNote}</p>
+          <p class="mt-3 text-[1.02rem] leading-relaxed text-muted">
+            {course.durationNote}
+          </p>
         )
       }
     </section>
 
     <section class="mt-16">
-      <h2 class="text-[1.15rem] font-medium tracking-tight">Learning outcomes</h2>
+      <h2 class="text-[1.15rem] font-medium tracking-tight">
+        Learning outcomes
+      </h2>
       <ol class="mt-8 border-t border-hairline">
         {
           course.outcomes.map((item, index) => (
             <li class="grid grid-cols-[auto_1fr] gap-4 border-b border-hairline py-5 md:grid-cols-[5.5rem_1fr] md:gap-10">
               <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
-                {String(index + 1).padStart(2, '0')}
+                {String(index + 1).padStart(2, "0")}
               </span>
-              <p class="max-w-2xl text-[1.02rem] leading-relaxed text-muted">{item}</p>
+              <p class="max-w-2xl text-[1.02rem] leading-relaxed text-muted">
+                {item}
+              </p>
             </li>
           ))
         }
@@ -192,7 +235,7 @@ const breadcrumbLd = {
             <li class="grid grid-cols-1 border-b border-hairline md:grid-cols-[5.5rem_minmax(0,16rem)_1fr]">
               <div class="flex items-start border-hairline py-5 md:border-r md:pr-5">
                 <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
-                  {String(index + 1).padStart(2, '0')}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
               <h3 class="px-0 py-2 text-[1.05rem] font-medium tracking-tight md:border-r md:px-6 md:py-5">
@@ -211,31 +254,40 @@ const breadcrumbLd = {
 
     <div class="mt-16 grid gap-10 md:grid-cols-2 md:gap-16">
       <section>
-        <h2 class="text-[1.15rem] font-medium tracking-tight">Practical work</h2>
+        <h2 class="text-[1.15rem] font-medium tracking-tight">
+          Practical work
+        </h2>
         <p class="mt-4 max-w-xl text-[1.02rem] leading-relaxed text-muted">
           {course.practicalWork}
         </p>
       </section>
       <section>
         <h2 class="text-[1.15rem] font-medium tracking-tight">Takeaways</h2>
-        <ul class="mt-4 max-w-xl list-disc space-y-3 pl-5 text-[1.02rem] leading-relaxed text-muted marker:text-ink/30">
+        <ul
+          class="mt-4 max-w-xl list-disc space-y-3 pl-5 text-[1.02rem] leading-relaxed text-muted marker:text-ink/30"
+        >
           {course.takeaways.map((item) => <li>{item}</li>)}
         </ul>
       </section>
     </div>
 
     <section class="mt-16 max-w-2xl border-t border-hairline pt-10">
-      <h2 class="text-[1.15rem] font-medium tracking-tight">{deliveryOptions.title}</h2>
-      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">{deliveryOptions.body}</p>
+      <h2 class="text-[1.15rem] font-medium tracking-tight">
+        {deliveryOptions.title}
+      </h2>
+      <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+        {deliveryOptions.body}
+      </p>
     </section>
 
     <section class="mt-16 max-w-xl">
       <h2 class="text-[1.15rem] font-medium tracking-tight">Instructor</h2>
       <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-        {founder.name}, {founder.role}. He has a degree in Artificial Intelligence and around twenty years of
-        professional technology training, including hundreds of courses for engineering teams and
-        large organisations.
-        {' '}
+        {founder.name}, {founder.role}. Nicholas has a BSc in Artificial
+        Intelligence and over twenty five years of professional technology
+        training, including hundreds of courses for engineering teams and large
+        organisations.
+        {" "}
         <a href="/about" class="text-ink hover:text-cobalt">About</a>.
       </p>
     </section>
@@ -243,7 +295,9 @@ const breadcrumbLd = {
     {
       related.length > 0 && (
         <section class="mt-16">
-          <h2 class="text-[1.15rem] font-medium tracking-tight">Related courses</h2>
+          <h2 class="text-[1.15rem] font-medium tracking-tight">
+            Related courses
+          </h2>
           <ol class="mt-8 border-t border-hairline">
             {related.map((item) => (
               <li class="border-b border-hairline py-5">
@@ -251,7 +305,10 @@ const breadcrumbLd = {
                   {item.duration} · {item.level}
                 </p>
                 <h3 class="mt-2 text-[1.05rem] font-medium tracking-tight">
-                  <a href={courseHref(item.slug)} class="text-ink no-underline hover:text-cobalt">
+                  <a
+                    href={courseHref(item.slug)}
+                    class="text-ink no-underline hover:text-cobalt"
+                  >
                     {item.title}
                   </a>
                 </h3>

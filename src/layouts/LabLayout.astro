@@ -1,9 +1,13 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import CtaLink from '../components/CtaLink.astro';
-import { getLabSource, labIndexHref } from '../data/labs';
-import { getProgramme, programmeContactHref, programmeHref } from '../data/programmes';
+import BaseLayout from "./BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import CtaLink from "../components/CtaLink.astro";
+import { getLabSource, labIndexHref } from "../data/labs";
+import {
+  getProgramme,
+  programmeContactHref,
+  programmeHref,
+} from "../data/programmes";
 
 interface Crumb {
   href: string;
@@ -39,8 +43,10 @@ const {
 
 const programme = getProgramme(programmeSlug);
 const source = getLabSource(programmeSlug);
-const contactHref = programme ? programmeContactHref(programme.slug) : '/contact?interest=train';
-const landingHref = programme ? programmeHref(programme.slug) : '/training';
+const contactHref = programme
+  ? programmeContactHref(programme.slug)
+  : "/contact?interest=train";
+const landingHref = programme ? programmeHref(programme.slug) : "/training";
 const labsHref = labIndexHref(programmeSlug);
 ---
 
@@ -52,8 +58,11 @@ const labsHref = labIndexHref(programmeSlug);
       {
         crumbs.map((crumb, index) => (
           <>
-            {index > 0 && ' / '}
-            <a href={crumb.href} class="text-cobalt no-underline hover:text-ink">
+            {index > 0 && " / "}
+            <a
+              href={crumb.href}
+              class="text-cobalt no-underline hover:text-ink"
+            >
               {crumb.label}
             </a>
           </>
@@ -65,30 +74,46 @@ const labsHref = labIndexHref(programmeSlug);
       <p>{description}</p>
     </PageIntro>
 
-    <aside class="mt-10 max-w-2xl border border-hairline bg-paper px-5 py-4 text-[0.95rem] leading-relaxed text-muted">
-      This is the lab handbook for the private programme. Read the notes here; clone the repository to run
-      the exercises. Booking the taught course is how teams work through this material with an instructor.
+    <aside
+      class="mt-10 max-w-2xl border border-hairline bg-paper px-5 py-4 text-[0.95rem] leading-relaxed text-muted"
+    >
+      This is the lab handbook for the private programme. Read the notes here;
+      clone the repository to run the exercises. Booking the taught course is
+      how teams work through this material with an instructor.
     </aside>
 
     <p class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
       <CtaLink href={contactHref}>Talk to us about the programme</CtaLink>
-      <a href={githubUrl} class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt">
+      <a
+        href={githubUrl}
+        class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+      >
         View on GitHub
       </a>
     </p>
 
-    <div class="lab-body mt-14 max-w-3xl text-[1.02rem] leading-relaxed text-muted">
+    <div
+      class="lab-body mt-14 max-w-3xl text-[1.02rem] leading-relaxed text-muted"
+    >
       <slot />
     </div>
 
     {
       (previous || next) && (
-        <nav aria-label="Lab pagination" class="mt-16 grid gap-6 border-t border-hairline pt-8 md:grid-cols-2">
+        <nav
+          aria-label="Lab pagination"
+          class="mt-16 grid gap-6 border-t border-hairline pt-8 md:grid-cols-2"
+        >
           <div>
             {previous && (
               <>
-                <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Previous</p>
-                <a href={previous.href} class="mt-2 inline-block text-ink no-underline hover:text-cobalt">
+                <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                  Previous
+                </p>
+                <a
+                  href={previous.href}
+                  class="mt-2 inline-block text-ink no-underline hover:text-cobalt"
+                >
                   {previous.label}
                 </a>
               </>
@@ -97,8 +122,13 @@ const labsHref = labIndexHref(programmeSlug);
           <div class="md:text-right">
             {next && (
               <>
-                <p class="font-mono text-[11px] tracking-[0.18em] text-muted">Next</p>
-                <a href={next.href} class="mt-2 inline-block text-ink no-underline hover:text-cobalt">
+                <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                  Next
+                </p>
+                <a
+                  href={next.href}
+                  class="mt-2 inline-block text-ink no-underline hover:text-cobalt"
+                >
                   {next.label}
                 </a>
               </>
@@ -111,17 +141,20 @@ const labsHref = labIndexHref(programmeSlug);
     {
       source && (
         <section class="mt-16 max-w-2xl border-t border-hairline pt-10">
-          <h2 class="text-[1.15rem] font-medium tracking-tight">Run the labs</h2>
+          <h2 class="text-[1.15rem] font-medium tracking-tight">
+            Run the labs
+          </h2>
           <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-            The site cannot execute Python, pytest, or model APIs. Clone the course repository and follow
-            its README for setup.
+            Clone the course repository and follow its README for setup.
           </p>
-          <pre class="mt-6 overflow-x-auto border border-hairline bg-paper p-4 font-mono text-[0.85rem] text-ink"><code>{source.clone}</code></pre>
+          <pre class="mt-6 overflow-x-auto border border-hairline bg-paper p-4 font-mono text-[0.85rem] text-ink">
+            <code>{source.clone}</code>
+          </pre>
           <p class="mt-6">
             <a href={landingHref} class="text-ink hover:text-cobalt">
-              {programme?.title ?? 'Programme'} landing
+              {programme?.title ?? "Programme"} landing
             </a>
-            {' · '}
+            {" · "}
             <a href={labsHref} class="text-ink hover:text-cobalt">
               Lab handbook
             </a>
@@ -131,8 +164,8 @@ const labsHref = labIndexHref(programmeSlug);
     }
 
     <p class="mt-10 max-w-2xl text-[0.9rem] leading-relaxed text-muted">
-      This material is proprietary teaching content, published here as a handbook. It is not licensed for
-      other trainers to deliver as a course.
+      This material is proprietary teaching content, published here as a
+      handbook. It is not licensed for other trainers to deliver as a course.
     </p>
   </article>
 </BaseLayout>

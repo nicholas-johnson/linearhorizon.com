@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageIntro from '../../../components/PageIntro.astro';
+import CtaLink from '../../../components/CtaLink.astro';
+import { audienceHref, audienceLandings } from '../../../data/courses';
+---
+
+<BaseLayout
+  fullTitle="AI Training by Role | Linear Horizon"
+  description="AI training landing pages for software engineers, technical leaders, business leaders and architects."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+      <a href="/training" class="text-cobalt no-underline hover:text-ink">Training</a>
+    </p>
+    <PageIntro kicker="02 / For" title="Start from the people in the room." class="mt-6">
+      <p>
+        The same catalogue, arranged by who has to do the work. Choose a role, then we will still
+        shape the days to your organisation.
+      </p>
+    </PageIntro>
+
+    <ol class="mt-16 border-t border-ink/20">
+      {
+        audienceLandings.map((landing, index) => (
+          <li class="grid grid-cols-1 gap-3 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+            <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+              {String(index + 1).padStart(2, '0')}
+            </p>
+            <h2 class="text-[1.2rem] font-medium tracking-tight">
+              <a href={audienceHref(landing.slug)} class="text-ink no-underline hover:text-cobalt">
+                {landing.navLabel}
+              </a>
+            </h2>
+            <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{landing.lede}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-14">
+      <CtaLink href="/training" variant="secondary">Back to the catalogue</CtaLink>
+    </p>
+  </article>
+</BaseLayout>

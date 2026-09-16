@@ -1,15 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import CourseCard from '../../components/training/CourseCard.astro';
+import CourseGrid from '../../components/training/CourseGrid.astro';
+import CatalogueFilters from '../../components/training/CatalogueFilters.astro';
 import CtaLink from '../../components/CtaLink.astro';
 import {
+  audienceHref,
+  audienceLandings,
   courses,
   courseCategories,
   coursePathways,
   coursesInCategory,
   courseHref,
+  getCategory,
   pathwayCourses,
+  toCatalogueRecord,
+  topicHref,
 } from '../../data/courses';
 import {
   catalogueIntro,
@@ -17,6 +23,10 @@ import {
   deliveryOptions,
 } from '../../data/courses/catalogue';
 import { formatPrice, programmeContactHref, programmes } from '../../data/programmes';
+
+const catalogueRecords = courses.map((course) =>
+  toCatalogueRecord(course, getCategory(course.category)?.title ?? course.category),
+);
 ---
 
 <BaseLayout
@@ -28,18 +38,36 @@ import { formatPrice, programmeContactHref, programmes } from '../../data/progra
       <p>{catalogueIntro}</p>
     </PageIntro>
 
-    <p class="mt-10 font-mono text-[11px] tracking-[0.14em] text-muted">
-      {courses.length} courses · private corporate training · on-site or remote
-    </p>
+    <nav aria-label="Training for" class="mt-12">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">
+        <a href="/training/for" class="text-muted no-underline hover:text-cobalt">For</a>
+      </p>
+      <ul class="flex flex-wrap gap-x-5 gap-y-2">
+        {
+          audienceLandings.map((landing) => (
+            <li>
+              <a
+                href={audienceHref(landing.slug)}
+                class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+              >
+                {landing.navLabel}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
 
-    <nav aria-label="Course categories" class="mt-14 border-t border-ink/20 pt-8">
-      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Categories</p>
+    <nav aria-label="Course topics" class="mt-8">
+      <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">
+        <a href="/training/topics" class="text-muted no-underline hover:text-cobalt">Topics</a>
+      </p>
       <ul class="flex flex-wrap gap-x-5 gap-y-2">
         {
           courseCategories.map((category) => (
             <li>
               <a
-                href={`#${category.id}`}
+                href={topicHref(category.id)}
                 class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
               >
                 {category.title}
@@ -50,44 +78,56 @@ import { formatPrice, programmeContactHref, programmes } from '../../data/progra
       </ul>
     </nav>
 
-    {
-      courseCategories.map((category, index) => {
-        const items = coursesInCategory(category.id);
-        return (
-          <section id={category.id} class="mt-20 scroll-mt-10">
-            <div class="border-b border-ink/20 pb-6">
-              <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
-                {String(index + 1).padStart(2, '0')}
-              </p>
-              <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">{category.title}</h2>
-              <p class="mt-3 max-w-xl text-[1.02rem] leading-relaxed text-muted">
-                {category.summary}
-              </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
-              {items.map((course, index) => (
-                <div
-                  class:list={[
-                    index % 2 === 0 && 'md:border-r md:pr-10',
-                    index % 2 === 1 && 'md:pl-2',
-                  ]}
-                >
-                  <CourseCard
-                    title={course.title}
-                    href={courseHref(course.slug)}
-                    shortDescription={course.shortDescription}
-                    duration={course.duration}
-                    level={course.level}
-                    audienceLabel={course.audienceLabel}
-                    categoryTitle={category.title}
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-        );
-      })
-    }
+    <CatalogueFilters total={courses.length} />
+
+    <script type="application/json" id="catalogue-data" set:html={JSON.stringify(catalogueRecords)} />
+
+    <div id="catalogue" class="mt-6">
+      <p id="catalogue-empty" hidden class="border-t border-ink/20 pt-10 text-[1.02rem] leading-relaxed text-muted">
+        No courses match those filters.
+        {' '}
+        <button
+          type="reset"
+          form="catalogue-filters"
+          class="text-ink underline-offset-[0.18em] hover:text-cobalt"
+        >
+          Clear filters
+        </button>
+        {' '}
+        or
+        {' '}
+        <a href="/contact?interest=train" class="text-ink hover:text-cobalt">talk to us</a>
+        about a tailored programme.
+      </p>
+
+      {
+        courseCategories.map((category, index) => {
+          const items = coursesInCategory(category.id);
+          return (
+            <section
+              id={category.id}
+              data-category-section
+              class="mt-20 scroll-mt-10"
+            >
+              <div class="border-b border-ink/20 pb-6">
+                <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+                  <a href={topicHref(category.id)} class="text-ink no-underline hover:text-cobalt">
+                    {category.title}
+                  </a>
+                </h2>
+                <p class="mt-3 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+                  {category.summary}
+                </p>
+              </div>
+              <CourseGrid courses={items} interactive />
+            </section>
+          );
+        })
+      }
+    </div>
 
     <section id="pathways" class="mt-24">
       <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Pathways</p>
@@ -206,3 +246,8 @@ import { formatPrice, programmeContactHref, programmes } from '../../data/progra
     </section>
   </article>
 </BaseLayout>
+
+<script>
+  import { mountCourseCatalogue } from '../../scripts/course-catalogue';
+  mountCourseCatalogue();
+</script>

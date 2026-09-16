@@ -1,0 +1,105 @@
+---
+import { compareRows, subjects } from '../../data/compare';
+import type { CompareSubjectId } from '../../data/compare';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'How the products differ' } = Astro.props;
+---
+
+<section>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <div class="overflow-x-auto border border-hairline bg-paper">
+    <table class="hidden w-full min-w-[64rem] border-collapse text-left lg:table">
+      <caption class="sr-only">
+        Comparison of Claude Cowork, Grok Bot and Linear Horizon by purpose, runtime, output, persistence, human role and how they are obtained
+      </caption>
+      <thead>
+        <tr class="border-b border-hairline">
+          <th
+            scope="col"
+            class="w-[9.5rem] px-4 py-4 font-mono text-[11px] font-normal tracking-[0.16em] text-muted"
+          >
+            —
+          </th>
+          {
+            subjects.map((subject) => (
+              <th scope="col" class="px-4 py-4">
+                {subject.href ? (
+                  <a
+                    href={subject.href}
+                    class="font-mono text-[11px] tracking-[0.16em] text-ink no-underline hover:text-cobalt"
+                  >
+                    {subject.name}
+                  </a>
+                ) : (
+                  <span class="font-mono text-[11px] tracking-[0.16em] text-ink">{subject.name}</span>
+                )}
+                <span class="mt-1 block font-mono text-[11px] tracking-[0.12em] font-normal text-muted">
+                  {subject.vendor}
+                  <span class="mx-2 text-hairline">/</span>
+                  {subject.verb}
+                </span>
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          compareRows.map((row) => (
+            <tr class="border-b border-hairline last:border-b-0">
+              <th
+                scope="row"
+                class="px-4 py-5 align-top font-mono text-[11px] font-normal tracking-[0.14em] text-muted"
+              >
+                {row.label}
+              </th>
+              {subjects.map((subject) => (
+                <td class="px-4 py-5 align-top text-[0.92rem] leading-relaxed text-ink">
+                  {row[subject.id as CompareSubjectId]}
+                </td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid gap-0 border border-hairline lg:hidden">
+    {
+      subjects.map((subject, index) => (
+        <article
+          class:list={['bg-paper p-5', index < subjects.length - 1 && 'border-b border-hairline']}
+        >
+          {subject.href ? (
+            <a
+              href={subject.href}
+              class="font-mono text-[11px] tracking-[0.16em] text-cobalt no-underline hover:text-ink"
+            >
+              {subject.name}
+            </a>
+          ) : (
+            <p class="font-mono text-[11px] tracking-[0.16em] text-cobalt">{subject.name}</p>
+          )}
+          <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">
+            {subject.vendor}
+            <span class="mx-2 text-hairline">/</span>
+            {subject.verb}
+          </p>
+          <dl class="mt-5 space-y-4">
+            {compareRows.map((row) => (
+              <div>
+                <dt class="font-mono text-[11px] tracking-[0.14em] text-muted">{row.label}</dt>
+                <dd class="mt-1 text-[0.98rem] leading-relaxed">{row[subject.id]}</dd>
+              </div>
+            ))}
+          </dl>
+        </article>
+      ))
+    }
+  </div>
+</section>

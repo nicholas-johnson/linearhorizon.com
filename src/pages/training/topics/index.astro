@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageIntro from '../../../components/PageIntro.astro';
+import CtaLink from '../../../components/CtaLink.astro';
+import { courseCategories, coursesInCategory, topicHref } from '../../../data/courses';
+---
+
+<BaseLayout
+  fullTitle="AI Training Topics | Linear Horizon"
+  description="Browse Linear Horizon training by topic: foundations, leadership, AI engineering, RAG and agents, architecture, models, cloud platforms and workshops."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+      <a href="/training" class="text-cobalt no-underline hover:text-ink">Training</a>
+    </p>
+    <PageIntro kicker="02 / Topics" title="Browse the catalogue by topic." class="mt-6">
+      <p>
+        Each topic is a starting point, not a wall. Most programmes mix courses, shorten them, or
+        rebuild around a particular stack.
+      </p>
+    </PageIntro>
+
+    <ol class="mt-16 border-t border-ink/20">
+      {
+        courseCategories.map((category, index) => {
+          const count = coursesInCategory(category.id).length;
+          return (
+            <li class="grid grid-cols-1 gap-3 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <div>
+                <h2 class="text-[1.2rem] font-medium tracking-tight">
+                  <a href={topicHref(category.id)} class="text-ink no-underline hover:text-cobalt">
+                    {category.title}
+                  </a>
+                </h2>
+                <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">
+                  {count} {count === 1 ? 'course' : 'courses'}
+                </p>
+              </div>
+              <p class="max-w-xl text-[1.02rem] leading-relaxed text-muted">{category.summary}</p>
+            </li>
+          );
+        })
+      }
+    </ol>
+
+    <p class="mt-14">
+      <CtaLink href="/training" variant="secondary">Back to the catalogue</CtaLink>
+    </p>
+  </article>
+</BaseLayout>

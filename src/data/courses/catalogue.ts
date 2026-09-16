@@ -9,42 +9,58 @@ export const courseCategories: CourseCategory[] = [
     title: 'Foundations',
     summary:
       'Build an accurate picture of how generative AI works, and how to use it with judgement.',
+    seoTitle: 'Generative AI Foundations Training',
+    lede: 'A shared, accurate picture of how generative AI works. These courses are for mixed rooms and for teams that need a common language before they specialise.',
   },
   {
     id: 'leadership',
     title: 'Leadership',
     summary: 'Architectural, commercial and organisational decisions about AI that you can stand behind.',
+    seoTitle: 'AI Training for Technical and Business Leaders',
+    lede: 'Decision-making for people who have to approve, sponsor or refuse AI work. The teaching is architectural and commercial, not a coding class.',
   },
   {
     id: 'ai-engineering',
     title: 'AI Engineering',
     summary: 'Build, test, secure and operate applications that use large language models.',
+    seoTitle: 'AI Engineering Training',
+    lede: 'The engineering around large language models: structured outputs, retrieval, tools, evaluation, security, and the production behaviour of a non-deterministic component.',
   },
   {
     id: 'rag-agents',
     title: 'RAG & Agents',
     summary: 'Design retrieval systems, tool-using agents, and the combination of the two.',
+    seoTitle: 'RAG and AI Agents Training',
+    lede: 'Retrieval systems that can be measured, agents that can be bounded, and the architecture that combines the two without treating the model as a database.',
   },
   {
     id: 'architecture',
     title: 'Architecture',
     summary:
       'Give AI a production shape: platforms, assistants, security boundaries and the operational work that follows.',
+    seoTitle: 'Production AI Architecture Training',
+    lede: 'Give AI a production shape: platforms, assistants, security boundaries, and the operational work that decides whether a prototype can leave the lab.',
   },
   {
     id: 'models-ml',
     title: 'Models & Machine Learning',
     summary: 'How models work, how they are adapted, and how they are run in practice.',
+    seoTitle: 'Language Model and Machine Learning Training',
+    lede: 'How language models work, when to adapt them, and how to run them. The aim is understanding you can use in a design conversation, not a research degree.',
   },
   {
     id: 'cloud-platform',
     title: 'Cloud & Platform',
     summary: 'Cloud implementations, and the internal platforms that make AI usable across your teams.',
+    seoTitle: 'Cloud AI and Platform Engineering Training',
+    lede: 'Cloud implementations and the internal platforms that make AI usable across teams — identity, policy, retrieval, and a developer path that does not reinvent the stack for every project.',
   },
   {
     id: 'workshops',
     title: 'Workshops',
     summary: 'Focused build days and facilitated working sessions around a problem your team actually has.',
+    seoTitle: 'AI Workshops for Engineering Teams',
+    lede: 'Focused build days and facilitated working sessions. A workshop is for a problem your team already has, not a survey of the field.',
   },
 ];
 

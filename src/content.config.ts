@@ -12,6 +12,33 @@ const insights = defineCollection({
   }),
 });
 
+const whitepapers = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/whitepapers' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    kicker: z.string().default('Linear Horizon whitepaper'),
+    stages: z
+      .array(
+        z.object({
+          id: z.string(),
+          title: z.string(),
+          summary: z.string(),
+        }),
+      )
+      .optional(),
+    contents: z
+      .array(
+        z.object({
+          id: z.string(),
+          label: z.string(),
+        }),
+      )
+      .optional(),
+  }),
+});
+
 const labSourceFile = z.object({
   filename: z.string(),
   lang: z.string(),
@@ -37,4 +64,4 @@ const labs = defineCollection({
   }),
 });
 
-export const collections = { insights, labs };
+export const collections = { insights, labs, whitepapers };

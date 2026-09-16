@@ -8,6 +8,8 @@ import { modelsCourses } from './models.ts';
 import { ragAgentCourses } from './rag-agents.ts';
 import { workshopCourses } from './workshops.ts';
 import { courseCategories, coursePathways } from './catalogue.ts';
+import { audienceLandings } from './landings.ts';
+import { programmes } from '../programmes.ts';
 
 export const courses: Course[] = [
   ...foundationsCourses,
@@ -58,7 +60,48 @@ export function courseContactHref(slug: string) {
 }
 
 export { courseCategories, coursePathways };
+export {
+  audienceHref,
+  catalogueHref,
+  durationFilters,
+  parseCatalogueFilters,
+  toCatalogueRecord,
+  topicHref,
+} from './filter.ts';
+export { audienceLandings, getAudienceLanding } from './landings.ts';
 export type { Course, CourseCategoryId } from './types.ts';
+export type { AudienceLanding } from './landings.ts';
+export type { CatalogueCourseRecord, CatalogueFilters } from './filter.ts';
+
+export function landingCourses(slugs: string[]) {
+  return slugs.map((slug) => {
+    const course = getCourse(slug);
+    if (!course) throw new Error(`Unknown course in landing: ${slug}`);
+    return course;
+  });
+}
+
+export function landingProgrammes(slugs: string[]) {
+  return slugs.map((slug) => {
+    const programme = programmes.find((item) => item.slug === slug);
+    if (!programme) throw new Error(`Unknown programme in landing: ${slug}`);
+    return programme;
+  });
+}
+
+export function landingPathways(ids: string[]) {
+  return ids.map((id) => {
+    const pathway = coursePathways.find((item) => item.id === id);
+    if (!pathway) throw new Error(`Unknown pathway in landing: ${id}`);
+    return pathway;
+  });
+}
+
+export function pathwaysForCategory(categoryId: CourseCategoryId) {
+  return coursePathways.filter((pathway) =>
+    pathway.slugs.some((slug) => getCourse(slug)?.category === categoryId),
+  );
+}
 
 const courseSlugs = courses.map((course) => course.slug);
 if (new Set(courseSlugs).size !== courseSlugs.length) {
@@ -67,4 +110,10 @@ if (new Set(courseSlugs).size !== courseSlugs.length) {
 
 for (const pathway of coursePathways) {
   pathwayCourses(pathway.slugs);
+}
+
+for (const landing of audienceLandings) {
+  landingCourses(landing.slugs);
+  landingProgrammes(landing.programmeSlugs);
+  landingPathways(landing.pathwayIds);
 }

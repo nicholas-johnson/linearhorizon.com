@@ -1,0 +1,71 @@
+---
+import { courseLevels } from '../../data/courses/types';
+import { courseCategories } from '../../data/courses/catalogue';
+import { durationFilters } from '../../data/courses/filter';
+
+interface Props {
+  total: number;
+}
+
+const { total } = Astro.props;
+
+const fieldClass =
+  'mt-2 w-full appearance-none rounded-none border border-hairline bg-paper px-3 py-3 text-[1rem] text-ink';
+---
+
+<form id="catalogue-filters" role="search" class="mt-14 scroll-mt-10 border-t border-ink/20 pt-8">
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Find a course</p>
+
+  <label class="block max-w-2xl">
+    <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Search</span>
+    <input
+      type="search"
+      name="q"
+      placeholder="Title, topic or audience"
+      autocomplete="off"
+      class={fieldClass}
+    />
+  </label>
+
+  <div class="mt-6 grid gap-6 md:grid-cols-3">
+    <label class="block">
+      <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Category</span>
+      <select name="category" class={fieldClass}>
+        <option value="">All categories</option>
+        {courseCategories.map((category) => <option value={category.id}>{category.title}</option>)}
+      </select>
+    </label>
+    <label class="block">
+      <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Level</span>
+      <select name="level" class={fieldClass}>
+        <option value="">All levels</option>
+        {courseLevels.map((level) => <option value={level}>{level}</option>)}
+      </select>
+    </label>
+    <label class="block">
+      <span class="font-mono text-[11px] tracking-[0.18em] text-muted">Duration</span>
+      <select name="duration" class={fieldClass}>
+        <option value="">Any duration</option>
+        {durationFilters.map((item) => <option value={item.id}>{item.label}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+    <p
+      id="catalogue-count"
+      role="status"
+      class="font-mono text-[11px] tracking-[0.14em] text-muted"
+    >
+      {total} courses · private corporate training · on-site or remote
+    </p>
+    <button
+      id="catalogue-clear"
+      type="reset"
+      hidden
+      class="font-mono text-[11px] tracking-[0.14em] text-ink underline-offset-[0.18em] hover:text-cobalt"
+    >
+      Clear filters
+    </button>
+  </div>
+</form>

@@ -1,13 +1,13 @@
-import type { Course, CourseCategoryId } from './types';
-import { architectureCourses } from './architecture';
-import { cloudCourses } from './cloud';
-import { engineeringCourses } from './engineering';
-import { foundationsCourses } from './foundations';
-import { leadershipCourses } from './leadership';
-import { modelsCourses } from './models';
-import { ragAgentCourses } from './rag-agents';
-import { workshopCourses } from './workshops';
-import { courseCategories, coursePathways } from './catalogue';
+import type { Course, CourseCategoryId } from './types.ts';
+import { architectureCourses } from './architecture.ts';
+import { cloudCourses } from './cloud.ts';
+import { engineeringCourses } from './engineering.ts';
+import { foundationsCourses } from './foundations.ts';
+import { leadershipCourses } from './leadership.ts';
+import { modelsCourses } from './models.ts';
+import { ragAgentCourses } from './rag-agents.ts';
+import { workshopCourses } from './workshops.ts';
+import { courseCategories, coursePathways } from './catalogue.ts';
 
 export const courses: Course[] = [
   ...foundationsCourses,
@@ -58,7 +58,7 @@ export function courseContactHref(slug: string) {
 }
 
 export { courseCategories, coursePathways };
-export type { Course, CourseCategoryId } from './types';
+export type { Course, CourseCategoryId } from './types.ts';
 
 const courseSlugs = courses.map((course) => course.slug);
 if (new Set(courseSlugs).size !== courseSlugs.length) {

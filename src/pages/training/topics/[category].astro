@@ -1,0 +1,36 @@
+---
+import TrainingLanding from '../../../components/training/TrainingLanding.astro';
+import {
+  catalogueHref,
+  courseCategories,
+  coursesInCategory,
+  getCategory,
+  pathwaysForCategory,
+} from '../../../data/courses';
+
+export function getStaticPaths() {
+  return courseCategories.map((category) => ({
+    params: { category: category.id },
+  }));
+}
+
+const { category: categoryId } = Astro.params;
+const category = categoryId ? getCategory(categoryId) : undefined;
+if (!category) throw new Error(`Unknown training topic: ${categoryId}`);
+
+const courses = coursesInCategory(category.id);
+const pathways = pathwaysForCategory(category.id);
+---
+
+<TrainingLanding
+  kicker={`02 / ${category.title}`}
+  title={`${category.title} training.`}
+  seoTitle={category.seoTitle}
+  description={category.lede}
+  lede={category.lede}
+  courses={courses}
+  pathways={pathways}
+  catalogueLabel={`See ${category.title.toLowerCase()} in the catalogue`}
+  catalogueLink={catalogueHref({ category: category.id })}
+  parent={{ href: '/training/topics', label: 'Topics' }}
+/>

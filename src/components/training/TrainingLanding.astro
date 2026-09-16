@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../PageIntro.astro';
+import CtaLink from '../CtaLink.astro';
+import CourseGrid from './CourseGrid.astro';
+import { site } from '../../data/site';
+import {
+  catalogueHref,
+  courseHref,
+  pathwayCourses,
+  type Course,
+} from '../../data/courses';
+import type { CoursePathway } from '../../data/courses/types';
+import { formatPrice, programmeContactHref, type Programme } from '../../data/programmes';
+
+interface Props {
+  kicker: string;
+  title: string;
+  seoTitle: string;
+  description: string;
+  lede: string;
+  courses: Course[];
+  programmes?: Programme[];
+  pathways?: CoursePathway[];
+  catalogueLabel?: string;
+  catalogueLink?: string;
+  parent?: { href: string; label: string };
+}
+
+const {
+  kicker,
+  title,
+  seoTitle,
+  description,
+  lede,
+  courses,
+  programmes = [],
+  pathways = [],
+  catalogueLabel = 'Browse the full catalogue',
+  catalogueLink = catalogueHref(),
+  parent,
+} = Astro.props;
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'Training', item: `${site.url}/training/` },
+    ...(parent
+      ? [
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: parent.label,
+            item: new URL(parent.href, Astro.site).toString(),
+          },
+        ]
+      : []),
+    {
+      '@type': 'ListItem',
+      position: parent ? 4 : 3,
+      name: seoTitle,
+      item: pageUrl,
+    },
+  ],
+};
+
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: seoTitle,
+  description,
+  url: pageUrl,
+  numberOfItems: courses.length,
+  itemListElement: courses.map((course, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: new URL(`${courseHref(course.slug)}/`, Astro.site).toString(),
+    name: course.title,
+  })),
+};
+---
+
+<BaseLayout fullTitle={`${seoTitle} | Linear Horizon`} description={description}>
+  <script
+    slot="head"
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbLd)}
+  />
+  <script
+    slot="head"
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(itemListLd)}
+  />
+
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">
+      <a href="/training" class="text-cobalt no-underline hover:text-ink">Training</a>
+      {
+        parent && (
+          <>
+            {' / '}
+            <a href={parent.href} class="text-cobalt no-underline hover:text-ink">
+              {parent.label}
+            </a>
+          </>
+        )
+      }
+    </p>
+
+    <PageIntro kicker={kicker} title={title} class="mt-6">
+      <p>{lede}</p>
+    </PageIntro>
+
+    <p class="mt-10 font-mono text-[11px] tracking-[0.14em] text-muted">
+      {courses.length} {courses.length === 1 ? 'course' : 'courses'} · private corporate training ·
+      on-site or remote
+    </p>
+
+    <p class="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+      <CtaLink href="/contact?interest=train">Talk to us about a programme</CtaLink>
+      <CtaLink href={catalogueLink} variant="secondary">{catalogueLabel}</CtaLink>
+    </p>
+
+    <section class="mt-16">
+      <h2 class="text-[1.15rem] font-medium tracking-tight">Courses</h2>
+      <div class="mt-2">
+        <CourseGrid courses={courses} />
+      </div>
+    </section>
+
+    {
+      programmes.length > 0 && (
+        <section class="mt-20">
+          <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Python programmes</p>
+          <h2 class="text-[1.35rem] font-medium tracking-tight">Flagship Python programmes</h2>
+          <ol class="mt-8 border-t border-ink/20">
+            {programmes.map((item) => (
+              <li class="grid grid-cols-1 gap-3 border-b border-hairline py-10 md:grid-cols-[5.5rem_minmax(0,16rem)_1fr] md:gap-10">
+                <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{item.duration}</p>
+                <div>
+                  <h3 class="text-[1.2rem] font-medium tracking-tight">
+                    <a
+                      href={`/training/${item.slug}`}
+                      class="text-ink no-underline hover:text-cobalt"
+                    >
+                      {item.title}
+                    </a>
+                  </h3>
+                  <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">
+                    From {formatPrice(item.priceFrom)}
+                  </p>
+                </div>
+                <div class="max-w-xl">
+                  <p class="text-[1.02rem] leading-relaxed text-muted">{item.summary}</p>
+                  <p class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                    <a
+                      href={`/training/${item.slug}/labs`}
+                      class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+                    >
+                      Lab handbook
+                    </a>
+                    <a
+                      href={programmeContactHref(item.slug)}
+                      class="font-mono text-[11px] tracking-[0.14em] text-ink no-underline hover:text-cobalt"
+                    >
+                      Talk to us
+                    </a>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      pathways.length > 0 && (
+        <section class="mt-20">
+          <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">Pathways</p>
+          <h2 class="text-[1.35rem] font-medium tracking-tight">Suggested pathways</h2>
+          <div class="mt-10 grid gap-10 lg:grid-cols-2">
+            {pathways.map((pathway) => {
+              const steps = pathwayCourses(pathway.slugs);
+              return (
+                <div class="border-t border-hairline pt-8">
+                  <h3 class="text-[1.15rem] font-medium tracking-tight">{pathway.title}</h3>
+                  <p class="mt-3 max-w-xl text-[0.98rem] leading-relaxed text-muted">
+                    {pathway.summary}
+                  </p>
+                  <ol class="mt-6 space-y-3">
+                    {steps.map((course, index) => (
+                      <li class="grid grid-cols-[auto_1fr] gap-3">
+                        <span class="font-mono text-[11px] tracking-[0.18em] text-muted">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div>
+                          <a
+                            href={courseHref(course.slug)}
+                            class="text-ink no-underline hover:text-cobalt"
+                          >
+                            {course.title}
+                          </a>
+                          <p class="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted">
+                            {course.duration} · {course.level}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+
+    <slot />
+  </article>
+</BaseLayout>

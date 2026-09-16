@@ -1,0 +1,35 @@
+---
+import CourseCard from './CourseCard.astro';
+import { courseHref, getCategory, type Course } from '../../data/courses';
+
+interface Props {
+  courses: Course[];
+  interactive?: boolean;
+}
+
+const { courses, interactive = false } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
+  {
+    courses.map((course) => {
+      const category = getCategory(course.category);
+      return (
+        <div
+          data-course-card={interactive ? '' : undefined}
+          data-course-slug={interactive ? course.slug : undefined}
+        >
+          <CourseCard
+            title={course.title}
+            href={courseHref(course.slug)}
+            shortDescription={course.shortDescription}
+            duration={course.duration}
+            level={course.level}
+            audienceLabel={course.audienceLabel}
+            categoryTitle={category?.title ?? course.category}
+          />
+        </div>
+      );
+    })
+  }
+</div>

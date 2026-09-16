@@ -1,0 +1,33 @@
+---
+import TrainingLanding from '../../../components/training/TrainingLanding.astro';
+import {
+  audienceLandings,
+  getAudienceLanding,
+  landingCourses,
+  landingPathways,
+  landingProgrammes,
+} from '../../../data/courses';
+
+export function getStaticPaths() {
+  return audienceLandings.map((landing) => ({
+    params: { audience: landing.slug },
+  }));
+}
+
+const { audience } = Astro.params;
+const landing = audience ? getAudienceLanding(audience) : undefined;
+if (!landing) throw new Error(`Unknown training audience: ${audience}`);
+---
+
+<TrainingLanding
+  kicker="02 / For"
+  title={landing.title}
+  seoTitle={landing.seoTitle}
+  description={landing.description}
+  lede={landing.lede}
+  courses={landingCourses(landing.slugs)}
+  programmes={landingProgrammes(landing.programmeSlugs)}
+  pathways={landingPathways(landing.pathwayIds)}
+  catalogueLabel="Browse the full catalogue"
+  parent={{ href: '/training/for', label: 'For' }}
+/>

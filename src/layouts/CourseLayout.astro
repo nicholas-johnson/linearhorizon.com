@@ -100,7 +100,7 @@ const breadcrumbLd = {
             "@type": "ListItem",
             position: 3,
             name: category.title,
-            item: `${site.url}/training#${category.id}`,
+            item: `${site.url}/training/topics/${category.id}/`,
           },
         ]
       : []),
@@ -138,7 +138,7 @@ const breadcrumbLd = {
           <>
             {" / "}
             <a
-              href={`/training#${category.id}`}
+              href={`/training/topics/${category.id}`}
               class="text-cobalt no-underline hover:text-ink"
             >
               {category.title}

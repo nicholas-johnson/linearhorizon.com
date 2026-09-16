@@ -44,5 +44,17 @@ const path = currentPath(Astro.url.pathname);
         );
       })
     }
+    <li>
+      <a
+        href="/compare"
+        aria-current={path === '/compare' ? 'page' : undefined}
+        class:list={[
+          'font-mono text-[11px] tracking-[0.16em] no-underline',
+          path === '/compare' ? 'text-cobalt' : 'text-ink hover:text-cobalt',
+        ]}
+      >
+        Compare
+      </a>
+    </li>
   </ul>
 </nav>

@@ -1,0 +1,59 @@
+---
+import GridFrame from '../diagrams/GridFrame.astro';
+import { operatingModels } from '../../data/compare';
+
+interface Props {
+  caption?: string;
+}
+
+const { caption = 'Figure · Three operating models' } = Astro.props;
+---
+
+<figure>
+  <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
+  <GridFrame class="bg-paper p-5 md:p-8">
+    <ol class="space-y-8">
+      {
+        operatingModels.map((model) => (
+          <li>
+            <p
+              class:list={[
+                'font-mono text-[11px] tracking-[0.16em]',
+                'result' in model && model.result ? 'text-cobalt' : 'text-muted',
+              ]}
+            >
+              {model.name}
+            </p>
+            <ol class="mt-3 flex flex-col border border-hairline md:flex-row">
+              {model.steps.map((step, index) => (
+                <li
+                  class:list={[
+                    'relative flex flex-1 flex-col px-4 py-4',
+                    index < model.steps.length - 1 &&
+                      'border-b border-hairline md:border-r md:border-b-0',
+                    'result' in model &&
+                      model.result &&
+                      index === model.steps.length - 1 &&
+                      'bg-cobalt/5',
+                  ]}
+                >
+                  <span class="font-mono text-[11px] tracking-[0.18em] text-muted">{step.id}</span>
+                  <p class="mt-3 text-[0.95rem] font-medium tracking-tight">{step.title}</p>
+                  {index < model.steps.length - 1 && (
+                    <span
+                      class="pointer-events-none absolute -bottom-1 left-1/2 z-10 size-2 -translate-x-1/2 bg-horizon-500 md:top-1/2 md:-right-1 md:bottom-auto md:left-auto md:-translate-y-1/2 md:translate-x-0"
+                      aria-hidden="true"
+                    />
+                  )}
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))
+      }
+    </ol>
+  </GridFrame>
+  <figcaption class="sr-only">
+    Claude Cowork runs from a goal through files and tools to a deliverable. Grok Bot runs from a named teammate through a cloud computer into existing apps. Linear Horizon runs from an encoded process through specialist agents to an inspectable record and a human gate.
+  </figcaption>
+</figure>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { getCollection } from 'astro:content';
+
+const papers = (await getCollection('whitepapers')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout
+  title="Whitepapers"
+  description="Linear Horizon whitepapers on AI adoption, workflow design and building dependable capability in real organisations."
+>
+  <article class="mx-auto max-w-[88rem] px-6 py-16 md:px-10 md:py-24 lg:px-16">
+    <PageIntro kicker="09 / Whitepapers" title="From experimentation to operating practice.">
+      <p>
+        Longer papers on how organisations adopt AI — not as a demonstration, but as a dependable way of working.
+      </p>
+    </PageIntro>
+
+    <ol class="mt-16 border-t border-ink/20">
+      {
+        papers.map((paper) => (
+          <li class="border-b border-hairline py-10">
+            <p class="font-mono text-[11px] tracking-[0.14em] text-muted">
+              {paper.data.kicker}
+              <span class="mx-2 text-hairline">/</span>
+              <time datetime={paper.data.pubDate.toISOString()}>
+                {dateFormat.format(paper.data.pubDate)}
+              </time>
+            </p>
+            <h2 class="mt-3 max-w-2xl text-[1.25rem] font-medium tracking-tight">
+              <a href={`/whitepapers/${paper.id}`} class="text-ink no-underline hover:text-cobalt">
+                {paper.data.title}
+              </a>
+            </h2>
+            <p class="mt-3 max-w-xl text-[1.02rem] leading-relaxed text-muted">
+              {paper.data.description}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </article>
+</BaseLayout>

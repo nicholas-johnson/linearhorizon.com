@@ -16,6 +16,8 @@ export default defineConfig({
   integrations: [sitemap()],
   redirects: {
     '/approach': '/consulting',
+    '/claude-vs-grok-bot': '/compare',
+    '/claude-vs-grokbot': '/compare',
   },
   vite: {
     plugins: [tailwindcss()],

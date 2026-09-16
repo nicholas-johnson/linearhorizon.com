@@ -296,6 +296,7 @@ export const reinforcement = [
 export const engagementStarts = [
   { title: 'Book a training programme', href: '/training' },
   { title: 'Bring Linear Horizon in for AI architecture', href: '/consulting' },
+  { title: 'Read the Claude adoption whitepaper', href: '/whitepapers/four-stages-of-claude-adoption' },
   { title: 'Commission a bespoke application', href: '/build' },
   { title: 'Deploy a Linear Horizon product', href: '/products' },
   { title: 'Customise Platform around a specific workflow', href: '/products/platform' },
@@ -303,6 +304,7 @@ export const engagementStarts = [
   { title: 'Use Wargame for a strategic decision process', href: '/products/wargame' },
   { title: 'Use Funnel to research and qualify a market', href: '/products/funnel' },
   { title: 'Use Callcenter for agentic customer service', href: '/products/callcenter' },
+  { title: 'Compare Claude, Grok Bot and Linear Horizon', href: '/compare' },
 ] as const;
 
 export function currentPath(pathname: string) {

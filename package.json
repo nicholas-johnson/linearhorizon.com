@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "node --experimental-strip-types --test src/lib/callcenter.test.ts src/lib/labs/*.test.ts src/data/courses/filter.test.ts",
+    "test": "node --experimental-strip-types --test src/lib/callcenter.test.ts src/lib/api/v1.test.ts src/lib/labs/*.test.ts src/data/courses/filter.test.ts",
     "domains": "node domains/check.mjs"
   },
   "dependencies": {

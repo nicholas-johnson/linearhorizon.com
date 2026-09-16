@@ -1,15 +1,15 @@
-import type { Course, CourseCategoryId } from './types';
-import { architectureCourses } from './architecture';
-import { cloudCourses } from './cloud';
-import { engineeringCourses } from './engineering';
-import { foundationsCourses } from './foundations';
-import { leadershipCourses } from './leadership';
-import { modelsCourses } from './models';
-import { ragAgentCourses } from './rag-agents';
-import { workshopCourses } from './workshops';
-import { courseCategories, coursePathways } from './catalogue';
-import { audienceLandings } from './landings';
-import { programmes } from '../programmes';
+import type { Course, CourseCategoryId } from './types.ts';
+import { architectureCourses } from './architecture.ts';
+import { cloudCourses } from './cloud.ts';
+import { engineeringCourses } from './engineering.ts';
+import { foundationsCourses } from './foundations.ts';
+import { leadershipCourses } from './leadership.ts';
+import { modelsCourses } from './models.ts';
+import { ragAgentCourses } from './rag-agents.ts';
+import { workshopCourses } from './workshops.ts';
+import { courseCategories, coursePathways } from './catalogue.ts';
+import { audienceLandings } from './landings.ts';
+import { programmes } from '../programmes.ts';
 
 export const courses: Course[] = [
   ...foundationsCourses,
@@ -67,11 +67,11 @@ export {
   parseCatalogueFilters,
   toCatalogueRecord,
   topicHref,
-} from './filter';
-export { audienceLandings, getAudienceLanding } from './landings';
-export type { Course, CourseCategoryId } from './types';
-export type { AudienceLanding } from './landings';
-export type { CatalogueCourseRecord, CatalogueFilters } from './filter';
+} from './filter.ts';
+export { audienceLandings, getAudienceLanding } from './landings.ts';
+export type { Course, CourseCategoryId } from './types.ts';
+export type { AudienceLanding } from './landings.ts';
+export type { CatalogueCourseRecord, CatalogueFilters } from './filter.ts';
 
 export function landingCourses(slugs: string[]) {
   return slugs.map((slug) => {

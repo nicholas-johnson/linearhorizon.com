@@ -47,6 +47,8 @@ export interface CourseCategory {
   id: CourseCategoryId;
   title: string;
   summary: string;
+  seoTitle: string;
+  lede: string;
 }
 
 export interface CoursePathway {

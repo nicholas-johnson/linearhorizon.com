@@ -296,7 +296,7 @@ export const reinforcement = [
 export const engagementStarts = [
   { title: 'Book a training programme', href: '/training' },
   { title: 'Bring Linear Horizon in for AI architecture', href: '/consulting' },
-  { title: 'Read the Claude adoption whitepaper', href: '/whitepapers/four-stages-of-claude-adoption' },
+  { title: 'Read the AI adoption whitepaper', href: '/whitepapers/four-stages-of-ai-adoption' },
   { title: 'Commission a bespoke application', href: '/build' },
   { title: 'Deploy a Linear Horizon product', href: '/products' },
   { title: 'Customise Platform around a specific workflow', href: '/products/platform' },

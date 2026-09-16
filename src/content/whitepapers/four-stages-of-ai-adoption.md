@@ -1,18 +1,18 @@
 ---
-title: The four stages of Claude adoption in the workplace
-description: A practical four-stage model for Claude adoption — Assist, Standardise, Connect and Transform — and how to progress without treating autonomy as the goal.
+title: The four stages of AI adoption in the workplace
+description: A practical four-stage model for AI adoption — Assist, Standardise, Connect and Transform — and how to progress without treating autonomy as the goal.
 pubDate: 2026-09-16
 kicker: Linear Horizon whitepaper
 stages:
   - id: '01'
     title: Assist
-    summary: Claude helps an individual complete a task.
+    summary: AI helps an individual complete a task.
   - id: '02'
     title: Standardise
     summary: A team turns successful use into a repeatable practice.
   - id: '03'
     title: Connect
-    summary: Claude works with live organisational information and systems.
+    summary: AI works with live organisational information and systems.
   - id: '04'
     title: Transform
     summary: The organisation redesigns work around human–AI collaboration.
@@ -39,20 +39,20 @@ contents:
 
 Most organisations have already started using generative AI. The more useful question is whether they have actually adopted it.
 
-There is a substantial difference between an employee asking Claude to improve an email and an organisation redesigning a business process around human and artificial intelligence. Both may be described as “using AI”, but they create different kinds of value and require very different levels of trust, governance and organisational change.
+There is a substantial difference between an employee asking a model to improve an email and an organisation redesigning a business process around human and artificial intelligence. Both may be described as “using AI”, but they create different kinds of value and require very different levels of trust, governance and organisational change.
 
 This paper presents a practical four-stage model for understanding that journey:
 
-- **Assist** — Claude helps an individual complete a task.
+- **Assist** — AI helps an individual complete a task.
 - **Standardise** — a team turns successful use into a repeatable practice.
-- **Connect** — Claude works with live organisational information and systems.
+- **Connect** — AI works with live organisational information and systems.
 - **Transform** — the organisation redesigns work around human–AI collaboration.
 
 The model is not a race towards maximum autonomy. The goal is to find the right level for each workflow: useful, dependable and proportionate to the consequences of getting it wrong.
 
 ## Why adoption often stalls
 
-The first encounter with Claude can be impressive. It can analyse a document, explain a difficult subject, draft a proposal or challenge an argument in seconds. This creates immediate personal value, but it can also disguise the distance between an effective demonstration and a dependable workplace capability.
+The first encounter with a capable model can be impressive. It can analyse a document, explain a difficult subject, draft a proposal or challenge an argument in seconds. This creates immediate personal value, but it can also disguise the distance between an effective demonstration and a dependable workplace capability.
 
 Early adoption commonly stalls because organisations focus on access rather than operating practice. Employees receive an AI tool, attend prompt training and are then expected to discover valuable uses independently. A few confident people make rapid progress; others remain unsure what to use it for, what information they may provide or how much they should trust the response.
 
@@ -60,9 +60,9 @@ The four stages make the next step visible. They help leaders distinguish experi
 
 ## Stage 1: Assist
 
-### Claude as an individual productivity tool
+### AI as an individual productivity tool
 
-At the Assist stage, a person uses Claude to complete a bounded task. They provide the context, initiate the work and decide what to do with the result.
+At the Assist stage, a person uses a model to complete a bounded task. They provide the context, initiate the work and decide what to do with the result.
 
 Typical uses include:
 
@@ -77,17 +77,17 @@ This is sometimes dismissed as basic adoption, but it is valuable. It gives peop
 
 The principal risks at this stage are inconsistent quality, inappropriate data sharing and uncritical acceptance of plausible answers. The organisation therefore needs a simple acceptable-use policy, approved tools, practical training and a clear expectation that the employee remains accountable for the output.
 
-**Evidence of maturity:** people can identify appropriate tasks, provide useful context, verify important claims and explain where Claude should not be used.
+**Evidence of maturity:** people can identify appropriate tasks, provide useful context, verify important claims and explain where AI should not be used.
 
-> **Example.** A programme manager gives Claude a project update and asks it to produce an executive summary, identify unclear claims and suggest questions for the next steering meeting.
+> **Example.** A programme manager gives a model a project update and asks it to produce an executive summary, identify unclear claims and suggest questions for the next steering meeting.
 
 ## Stage 2: Standardise
 
-### Claude as a repeatable team practice
+### AI as a repeatable team practice
 
 At the Standardise stage, useful individual experiments become shared ways of working. Instead of every employee beginning with a blank conversation, a team captures its best instructions, reference material, examples, output formats and review criteria.
 
-This may involve shared Projects, Skills, prompt patterns, templates or checklists. The exact technology matters less than the organisational change: knowledge about how to perform the task is being made explicit and reusable.
+This may involve shared workspaces, reusable instructions, prompt patterns, templates or checklists. The exact technology matters less than the organisational change: knowledge about how to perform the task is being made explicit and reusable.
 
 Typical workflows include:
 
@@ -97,21 +97,21 @@ Typical workflows include:
 - creating first drafts that follow the organisation’s tone and structure
 - applying a consistent quality-assurance checklist to documents
 
-Standardisation improves consistency and makes successful practices easier to teach, evaluate and improve. It also exposes disagreement that ad hoc use can conceal. If a team cannot agree what a good output looks like, it cannot meaningfully evaluate whether Claude is producing one.
+Standardisation improves consistency and makes successful practices easier to teach, evaluate and improve. It also exposes disagreement that ad hoc use can conceal. If a team cannot agree what a good output looks like, it cannot meaningfully evaluate whether the model is producing one.
 
 The principal risk is automating a weak or poorly understood process. A shared prompt does not make a bad method good. Teams should define the intended outcome, identify authoritative sources, create representative test cases and agree who approves the result.
 
 **Evidence of maturity:** a workflow can be used successfully by multiple team members, produces outputs against explicit criteria and has a named owner who improves it over time.
 
-> **Example.** All programme managers use the same risk-review workflow. Claude assesses project updates against an agreed taxonomy, identifies supporting evidence and produces a draft risk register for human approval.
+> **Example.** All programme managers use the same risk-review workflow. The model assesses project updates against an agreed taxonomy, identifies supporting evidence and produces a draft risk register for human approval.
 
 ## Stage 3: Connect
 
-### Claude as part of the organisation’s workflow
+### AI as part of the organisation’s workflow
 
-At the Connect stage, Claude can retrieve authorised information directly from business systems and may be permitted to prepare or perform defined actions. The user no longer has to find every document and copy every piece of information into a conversation.
+At the Connect stage, a model can retrieve authorised information directly from business systems and may be permitted to prepare or perform defined actions. The user no longer has to find every document and copy every piece of information into a conversation.
 
-Connectors can give Claude controlled access to platforms such as Microsoft 365, Google Workspace, Slack, Jira, Asana, HubSpot and internal services. Custom connectors can be built using the Model Context Protocol (MCP), an open standard for connecting AI applications to tools and data.
+Connectors can give a model controlled access to platforms such as Microsoft 365, Google Workspace, Slack, Jira, Asana, HubSpot and internal services. Custom connectors can be built using the Model Context Protocol (MCP), an open standard for connecting AI applications to tools and data.
 
 Typical workflows include:
 
@@ -121,21 +121,21 @@ Typical workflows include:
 - analysing feedback across surveys, tickets and call transcripts
 - creating draft tasks or system updates after a meeting
 
-Connection changes both the value and the risk of the system. Claude has better context and can remove significant administrative effort. But permissions, source quality and action boundaries now matter as much as the model’s reasoning.
+Connection changes both the value and the risk of the system. The model has better context and can remove significant administrative effort. But permissions, source quality and action boundaries now matter as much as the model’s reasoning.
 
-The safest pattern is progressive authority. Claude might initially retrieve information, then prepare a proposed action, and only later be allowed to execute certain low-risk actions. Consequential, external or difficult-to-reverse actions should pass through an explicit approval step.
+The safest pattern is progressive authority. A system might initially retrieve information, then prepare a proposed action, and only later be allowed to execute certain low-risk actions. Consequential, external or difficult-to-reverse actions should pass through an explicit approval step.
 
 **Evidence of maturity:** access follows the user’s permissions; sources are identifiable; actions are logged; failures are visible; and approval is required where consequences justify it.
 
-> **Example.** Before a customer review, Claude retrieves the account history, recent emails, unresolved support cases, contractual commitments and product-usage information. It creates a cited briefing and proposes follow-up actions, but the account owner approves any CRM changes or customer communication.
+> **Example.** Before a customer review, a model retrieves the account history, recent emails, unresolved support cases, contractual commitments and product-usage information. It creates a cited briefing and proposes follow-up actions, but the account owner approves any CRM changes or customer communication.
 
 ## Stage 4: Transform
 
-### Claude as part of the operating model
+### AI as part of the operating model
 
 At the Transform stage, the organisation stops inserting AI into the old process and asks a more fundamental question: how should this work now be organised?
 
-Claude may coordinate a multi-step workflow, monitor changing conditions, call specialist tools, test its own output against defined criteria and escalate exceptions to people. Human involvement becomes more deliberate rather than simply more frequent: people set goals, exercise judgement, handle ambiguity, approve consequential decisions and remain accountable for outcomes.
+A system may coordinate a multi-step workflow, monitor changing conditions, call specialist tools, test its own output against defined criteria and escalate exceptions to people. Human involvement becomes more deliberate rather than simply more frequent: people set goals, exercise judgement, handle ambiguity, approve consequential decisions and remain accountable for outcomes.
 
 Typical applications include:
 
@@ -151,7 +151,7 @@ The principal risks are misplaced autonomy, hidden failures and ambiguity about 
 
 **Evidence of maturity:** performance is measured by business outcomes, not model activity; exceptions reach the right people; authority is deliberately bounded; and the process can fail safely.
 
-> **Example.** Claude monitors a portfolio of programmes, identifies emerging risks from project data and communications, gathers supporting evidence, recommends interventions and updates approved internal records. It escalates decisions involving material cost, contractual commitments or strategic trade-offs to the responsible leader.
+> **Example.** A system monitors a portfolio of programmes, identifies emerging risks from project data and communications, gathers supporting evidence, recommends interventions and updates approved internal records. It escalates decisions involving material cost, contractual commitments or strategic trade-offs to the responsible leader.
 
 ## A maturity model, not an autonomy ladder
 
@@ -166,7 +166,7 @@ Organisations should advance a workflow only when the additional value justifies
 - Which sources are authoritative?
 - What is the consequence of an incorrect answer or action?
 - Can the result be checked before it causes harm?
-- What should Claude be allowed to read, propose, change or send?
+- What should a model be allowed to read, propose, change or send?
 - Who remains accountable for the outcome?
 
 These questions move the conversation away from abstract enthusiasm or fear and towards concrete workflow design.
@@ -185,7 +185,7 @@ This is why adoption cannot be delegated entirely to either technology teams or 
 
 ## Conclusion
 
-Claude can create immediate value as an individual assistant, but sustainable advantage comes from understanding where the organisation is—and deliberately designing what comes next.
+AI can create immediate value as an individual assistant, but sustainable advantage comes from understanding where the organisation is—and deliberately designing what comes next.
 
 The most mature organisation is not necessarily the one with the most autonomous AI. It is the one that can repeatedly place the right information, instructions, tools and authority around a model to produce a dependable business outcome.
 

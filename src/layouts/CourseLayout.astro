@@ -32,6 +32,8 @@ function toWorkload(duration: string): string | undefined {
   if (days) return `P${days[1]}D`;
   const hours = text.match(/(\d+)\s*hour/);
   if (hours) return `PT${hours[1]}H`;
+  const minutes = text.match(/(\d+)\s*min/);
+  if (minutes) return `PT${minutes[1]}M`;
   return undefined;
 }
 

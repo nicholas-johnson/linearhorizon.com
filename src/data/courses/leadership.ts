@@ -148,4 +148,113 @@ export const leadershipCourses: Course[] = [
       'A ranked shortlist and recommended next steps',
     ],
   },
+  {
+    slug: 'ai-native-programme-management-with-claude',
+    title: 'AI-Native Programme Management with Claude',
+    shortDescription:
+      'A 90-minute seminar for programme and project leaders: how to move from individual Claude use to connected, governed workflows across the programme lifecycle.',
+    overview:
+      'Claude can already summarise documents, draft reports and help programme managers think through difficult problems. The more useful question is what happens when it is connected to live organisational systems and asked to run a defined piece of work.\n\nThis seminar is for teams that have already used generative AI and now need a way to progress from individual assistance to connected, repeatable and governed workflows. It covers custom connectors, the Model Context Protocol, agent design, human approval boundaries, evaluation, and the job of supervising work done by both people and AI.\n\nThe teaching is practical and architectural rather than a tour of prompting. Participants examine where their organisation currently sits, which programme-management workflows are actually suitable for automation, and what would have to be true before an agent is allowed to act.\n\nYou leave with a maturity model, a reference architecture for custom Claude connectors, and a short list of experiments worth running in the next six months.',
+    audience:
+      'Senior programme and project managers, product and business operations leaders, portfolio and transformation teams, technical programme managers, and AI adoption or enablement leads. The session is also useful for teams already using Claude or a comparable tool who need a shared vocabulary with engineering and governance.',
+    audienceLabel: 'Programme, project and operations leaders',
+    prerequisites:
+      'Some practical experience with generative AI is expected. This is not an introduction to prompting, and it is not a basic tour of Claude.',
+    duration: '90 minutes',
+    durationNote:
+      'Delivered as a live virtual seminar for up to 40 participants. A short discovery conversation beforehand can adapt the session to your organisation’s Claude use, Jira and programme-management workflows, connectors, and governance constraints.',
+    level: 'Leadership',
+    category: 'leadership',
+    outcomes: [
+      'Describe how Claude is moving from an individual assistant to a connected work platform.',
+      'Distinguish Projects, Skills, connectors, MCP servers and agents, and how they fit together.',
+      'Explain how a custom connector can give Claude controlled access to organisational systems.',
+      'Identify programme-management workflows that are suitable for AI automation — and those that are not.',
+      'Treat context engineering as a first-class design problem, not a prompting afterthought.',
+      'Design human approval and escalation points that match the cost of being wrong.',
+      'Use evaluations to make agentic workflows measurable rather than merely impressive.',
+      'Control permissions, cost and operational risk in a connected Claude deployment.',
+      'Sketch an AI-native programme-management operating model and the next practical experiments.',
+    ],
+    outline: [
+      {
+        title: 'From AI-assisted to AI-native programme management',
+        points: [
+          'How most organisations start: summaries, drafts and better written communication.',
+          'Four levels of maturity: assistant, participant, operator and control plane.',
+          'Where your organisation sits, and what the next level actually requires.',
+        ],
+      },
+      {
+        title: 'Claude as an enterprise work platform',
+        points: [
+          'Projects, persistent programme context and organisational knowledge.',
+          'Skills, connectors, the Model Context Protocol, tool use and structured outputs.',
+          'Cowork, Claude Code, APIs and bespoke enterprise agents.',
+          'How the pieces relate: connectors provide access, skills provide method, agents apply both to a defined outcome.',
+        ],
+      },
+      {
+        title: 'Building custom connectors with MCP',
+        points: [
+          'What an MCP server is, and how it differs from a connector.',
+          'Tools, resources and reusable prompts; wrapping existing enterprise APIs.',
+          'Bounded tools, local versus hosted servers, identity, permissions, audit and observability.',
+          'Separating read, propose and execute operations.',
+          'Example programme-management tools: search issues, retrieve decisions, find dependencies, get release evidence, identify stale risks, draft updates, validate changes and apply approved ones.',
+          'The point is not merely to connect Claude to Jira. It is to expose useful organisational capabilities with appropriate controls.',
+        ],
+      },
+      {
+        title: 'Designing high-value programme workflows',
+        points: [
+          'Programme risk radar: emerging schedule, dependency and release risks.',
+          'Release-readiness assessment from Jira, pipelines, security findings and decisions.',
+          'Decision intelligence: extracting decisions, rationale and later invalidating evidence.',
+          'Cross-programme dependency monitoring and evidence-backed executive reporting.',
+          'Assumption monitoring and programme pre-mortems from several specialist viewpoints.',
+        ],
+      },
+      {
+        title: 'From demonstrations to dependable operations',
+        points: [
+          'Why a successful demonstration is not evidence that a workflow is ready to operate.',
+          'Evaluation-driven development: representative scenarios, expected behaviour, tool selection and inputs.',
+          'Measuring factual accuracy, evidence quality, and accepted, rejected or corrected recommendations.',
+          'Testing incomplete or conflicting information, and detecting repeated or unauthorised actions.',
+          'The question changes from whether Claude produced a good answer to whether the workflow holds up across the situations programme teams actually encounter.',
+        ],
+      },
+      {
+        title: 'Governed autonomy: people, permissions and cost',
+        points: [
+          'Actions that can run automatically, recommendations that need review, changes that need named approval, and decisions that should remain human.',
+          'Least privilege, per-user versus shared identities, and read/write separation.',
+          'Idempotency, duplicate-action protection and audit trails.',
+          'Token and infrastructure cost, model routing, and measuring cost per successful outcome.',
+        ],
+      },
+      {
+        title: 'The next six months',
+        points: [
+          'Identify one recurring, evidence-rich workflow and its authoritative data sources.',
+          'Define a narrow set of read-only tools and create representative evaluations.',
+          'Pilot with experienced users; measure corrections, adoption, time saved and decision quality.',
+          'Introduce controlled actions only after the read-and-recommend path is reliable.',
+          'Reuse the connector, skills and evaluation set across related workflows.',
+        ],
+      },
+    ],
+    practicalWork:
+      'The seminar is interactive rather than a lecture. Typical elements include a short AI-maturity poll, analysis of an example programme workflow, a connector and agent architecture walkthrough, a human-approval design exercise, and group identification of one high-value workflow to test. Discovery beforehand can replace the generic examples with your own systems and terminology.',
+    takeaways: [
+      'An AI-native programme-management maturity model',
+      'A framework for identifying suitable agent workflows',
+      'A reference architecture for custom Claude connectors',
+      'A risk-based human-approval model',
+      'An evaluation checklist',
+      'A crawl–walk–run adoption roadmap',
+      'A shared vocabulary for discussing AI agents with technical, operational and governance teams',
+    ],
+  },
 ];

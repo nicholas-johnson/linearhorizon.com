@@ -164,6 +164,10 @@ test('catalog lists every generated file', () => {
   assert.equal(catalog.apiVersion, API_VERSION);
   assert.equal(catalog.kind, 'catalog');
   assert.equal(catalog.site, 'https://linearhorizon.com');
+  assert.match(
+    JSON.stringify(catalog),
+    /^\{"apiVersion":1,"kind":"catalog","self":"\/api\/v1\/index.json"/,
+  );
 
   const listed = catalog.files as CatalogFileRefLike[];
   const listedPaths = listed.map((item) => item.path);

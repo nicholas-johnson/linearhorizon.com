@@ -182,12 +182,18 @@ function apiFile(slug: string | undefined, body: Record<string, unknown>): ApiFi
   };
 }
 
+function withoutEnvelope(extra: Record<string, unknown>) {
+  return Object.fromEntries(
+    Object.entries(extra).filter(([key]) => key !== 'apiVersion' && key !== 'kind' && key !== 'self'),
+  );
+}
+
 function document(kind: ApiKind, self: string, extra: Record<string, unknown>): Record<string, unknown> {
   return {
-    ...extra,
     apiVersion: API_VERSION,
     kind,
     self,
+    ...withoutEnvelope(extra),
   };
 }
 

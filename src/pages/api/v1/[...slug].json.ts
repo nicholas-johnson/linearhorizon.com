@@ -1,15 +1,15 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
-import { buildApiV1Files, jsonFile } from '../../../lib/api/v1';
+import { loadApiV1Files } from '../../../lib/api/load.ts';
+import { jsonFile } from '../../../lib/api/v1.ts';
 
 export async function getStaticPaths() {
-  const [insights, labs] = await Promise.all([getCollection('insights'), getCollection('labs')]);
-  const files = buildApiV1Files({ insights, labs });
-
-  return files.map((file) => ({
-    params: { slug: file.slug },
-    props: { document: file.body },
-  }));
+  const files = await loadApiV1Files();
+  return files
+    .filter((file) => file.slug !== undefined)
+    .map((file) => ({
+      params: { slug: file.slug },
+      props: { document: file.body },
+    }));
 }
 
 interface Props {

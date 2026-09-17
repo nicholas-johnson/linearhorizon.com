@@ -64,6 +64,10 @@ The leading organisations examined in this paper are converging on that pattern:
 
 ## Google: agents become part of the production system
 
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/google.jpg" alt="Stylised illustration of autonomous agents working a software production floor while a person reviews completed work" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 Google provides some of the clearest evidence that agents are becoming operational infrastructure, although its strongest published examples concern software engineering rather than programme management.
 
 Google describes Antigravity as an “agent-first” development platform. Its 2026 iteration extends beyond an individual coding assistant into an environment where a person can orchestrate cohorts of autonomous agents. Those agents can undertake long-running work, use development tools and operate asynchronously rather than requiring the engineer to supervise every step.
@@ -87,6 +91,10 @@ The lesson from Google is not that the whole company is already autonomous. No r
 For programme leaders, Google’s engineering experience offers a useful analogy. The future programme agent will not simply write a better status report. It will be given a continuing responsibility: monitor this programme, compare reality with plan, investigate discrepancies, assemble evidence and escalate when defined conditions are met.
 
 ## Cisco: the ten-hour programme report becomes a fifteen-minute review
+
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/cisco.jpg" alt="Stylised illustration of scattered programme tools collapsing into a single live briefing" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
 
 Cisco provides the strongest published example of agentic workflow adoption applied directly to programme management.
 
@@ -124,6 +132,10 @@ Cisco’s story also demonstrates why an agent cannot compensate for a fragmente
 
 ## Datasite: the work becomes the report
 
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/datasite.jpg" alt="Stylised illustration of a factory-floor view of live organisational work" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 Datasite supplies perhaps the closest published example to the agentic programme office imagined at the beginning of this paper.
 
 The company had more than 200 objectives and key results, fragmented planning tools and no single view connecting strategy to delivery. Executives lacked current visibility. Teams compensated with static reporting and a dense calendar of coordination meetings.
@@ -153,6 +165,10 @@ For programme managers, this represents a significant shift in professional emph
 
 ## Procore: a roadmap that improves itself
 
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/procore.jpg" alt="Stylised illustration of a construction structure overlaid with a roadmap being improved" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 Procore, the California-based construction software company, faced a related portfolio problem. Its workforce had grown rapidly, but roadmaps were fragmented across spreadsheets, slide decks and text documents. Roadmap items were disconnected from the Jira environments where delivery work happened. Leadership lacked a reliable view of how initiatives connected to execution and strategy.
 
 Procore created a company-wide quarterly roadmap linked to teams’ delivery spaces and software components. It then introduced custom agents into the planning process.
@@ -178,6 +194,10 @@ For programme managers, this may be one of the most valuable forms of agency. Ma
 
 ## Kärcher: four agents prepare one product decision
 
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/karcher.jpg" alt="Stylised illustration of four agent stations preparing a single product decision" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 Kärcher’s digital-platform team provides a compact example of several agents collaborating around a single piece of work.
 
 The team previously assessed new feature proposals through live meetings and scattered notes. Turning the resulting discussion into a coherent user story required hours of manual consolidation.
@@ -197,6 +217,10 @@ The agents do not decide what Kärcher should build. They ensure that each idea 
 
 ## FTMO: autonomy with an emergency brake
 
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/ftmo.jpg" alt="Stylised illustration of a financial workflow halted at an emergency brake for human review" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 FTMO, a financial technology company, demonstrates how an agentic workflow can combine speed with deliberate human escalation.
 
 Its invoice workflow begins when a PDF is uploaded. Agents extract the vendor, reference and due date; compare the supplier with an internal registry; assign the appropriate roles; and route the invoice through a five-stage approval process. Each approval or rejection is documented with a timestamped audit record.
@@ -211,11 +235,19 @@ For a programme office, the equivalent is an agent that can request overdue evid
 
 ## A short operational example: Washmen
 
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/washmen.jpg" alt="Stylised illustration of garments on a rail, with a high-value item held at a risk gate" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 Washmen connected its physical garment-care operation to a sequence of specialised agents. The agents establish an item’s value, check its proposed treatment against risk categories and compare it with historical claims. If a high-value item has a risky care plan, the system raises a structured alert and prevents production from starting until a person reviews it.
 
 Washmen reports a 40–50 per cent reduction in manual work, claims resolution falling from two or three days to six hours, and fifteen high-risk damage incidents prevented. The relevance for programme management is not the garment-care setting. It is the operating pattern: detect risk early, assemble the evidence, take a safe reversible action and escalate before harm occurs.
 
 ## Block: employees build the tools they need
+
+<figure>
+  <img src="/images/whitepapers/agentic-workflows/block.jpg" alt="Stylised illustration of employees assembling their own tools at workshop benches" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
 
 Block, the financial technology company founded by Jack Dorsey, approached agentic adoption by giving employees a general-purpose agent called Goose.
 

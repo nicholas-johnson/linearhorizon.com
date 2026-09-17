@@ -10,7 +10,7 @@ const { class: className } = Astro.props;
 
 <nav aria-label="Product system" class:list={['product-line', className]}>
   <p class="mb-6 font-mono text-[11px] tracking-[0.16em] text-muted">
-    One system · five products
+    One system · {products.length} products
   </p>
 
   <ol class="product-line__mobile lg:hidden">
@@ -37,11 +37,10 @@ const { class: className } = Astro.props;
   </ol>
 
   <div class="product-line__desktop relative hidden lg:block">
-    <span class="product-line__axis" aria-hidden="true"></span>
-    <ol class="relative z-10 grid grid-cols-5 gap-4">
+    <ol class="grid grid-cols-4 gap-x-4 gap-y-12">
       {
         products.map((product, index) => (
-          <li class="min-w-0">
+          <li class="product-line__cell relative min-w-0">
             <a
               href={productHref(product.slug)}
               class="group flex flex-col items-start no-underline"
@@ -122,13 +121,19 @@ const { class: className } = Astro.props;
     background: var(--color-horizon-500);
   }
 
-  .product-line__axis {
+  .product-line__cell::before {
+    content: '';
     position: absolute;
     top: 0.26rem;
-    right: 0;
-    left: 0.2rem;
+    left: 0.55rem;
+    right: -1rem;
     height: 2px;
     background: var(--color-graphite-950);
+  }
+
+  .product-line__cell:nth-child(4n)::before,
+  .product-line__cell:last-child::before {
+    display: none;
   }
 
   .product-line__desktop-outcome {
@@ -141,7 +146,7 @@ const { class: className } = Astro.props;
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .product-line__axis {
+    .product-line__cell::before {
       transform-origin: left center;
       animation: product-axis 720ms var(--ease-brand) forwards;
     }

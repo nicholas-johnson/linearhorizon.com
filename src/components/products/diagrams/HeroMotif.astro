@@ -17,6 +17,10 @@ const copy = {
     kicker: 'Investigation',
     line: 'A question branches into hypotheses, then converges on evidence.',
   },
+  solve: {
+    kicker: 'Ledger',
+    line: 'A hard problem branches into logic and hypotheses; only an earned node is accepted.',
+  },
   wargame: {
     kicker: 'Simulation',
     line: 'Actors, incentives and responses are read as a distribution of outcomes.',
@@ -71,6 +75,22 @@ const copy = {
         <rect x="192" y="56" width="38" height="18" stroke="currentColor" stroke-opacity="0.5" />
         <path d="M73 74v10h94V74" stroke="currentColor" stroke-opacity="0.45" />
         <rect x="74" y="84" width="92" height="20" stroke="currentColor" />
+      </svg>
+    )
+  }
+  {
+    slug === 'solve' && (
+      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
+        <rect x="74" y="6" width="92" height="18" stroke="currentColor" />
+        <path d="M120 24v12M64 50V36h112v14" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="16" y="50" width="56" height="18" stroke="currentColor" stroke-opacity="0.55" />
+        <rect x="92" y="50" width="56" height="18" stroke="currentColor" />
+        <rect x="168" y="50" width="56" height="18" stroke="currentColor" stroke-opacity="0.55" />
+        <path d="M44 68v10h40V68M120 68v10M196 68v10" stroke="currentColor" stroke-opacity="0.4" />
+        <rect x="24" y="78" width="40" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="100" y="78" width="40" height="16" stroke="#145BFF" />
+        <rect x="176" y="78" width="40" height="16" stroke="currentColor" stroke-opacity="0.45" />
+        <rect x="118" y="84" width="4" height="4" fill="#145BFF" />
       </svg>
     )
   }

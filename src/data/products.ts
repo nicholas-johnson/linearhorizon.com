@@ -1,6 +1,7 @@
 export type ProductSlug =
   | "platform"
   | "stack"
+  | "solve"
   | "wargame"
   | "funnel"
   | "callcenter"
@@ -62,7 +63,7 @@ export const productFamily = {
   kicker: "Linear Horizon Products",
   headline: "Agentic systems for real organisational work.",
   support:
-    "Linear Horizon Platform provides the foundation. Specialist products then apply agentic AI to analysis, strategy, growth and customer service.",
+    "Linear Horizon Platform provides the foundation. Specialist products then apply agentic AI to analysis, research, strategy, growth and customer service.",
   model: "Foundation. Applications.",
 } as const;
 
@@ -72,7 +73,8 @@ export const comparison = [
     label: "Purpose",
     platform: "Run agentic systems",
     stack: "Investigate your data",
-    wargame: "Explore strategy",
+    solve: "Prove or refute a hard claim",
+    wargame: "Predict the future",
     funnel: "Find customers",
     callcenter: "Serve customers",
     query: "Measure product usage",
@@ -83,6 +85,7 @@ export const comparison = [
     label: "Input",
     platform: "Events, requests, knowledge and tools",
     stack: "Open-ended questions and organisational data",
+    solve: "A conjecture, modelling question or precise statement",
     wargame: "Strategic problem and actor model",
     funnel: "ICP and market signals",
     callcenter: "Voice, messaging, email and customer context",
@@ -94,6 +97,7 @@ export const comparison = [
     label: "Agentic process",
     platform: "Orchestration, tools and workflows",
     stack: "Hypothesis generation and testing",
+    solve: "Record, evidence, accept or reject, evolve",
     wargame: "Actor modelling and simulation",
     funnel: "Discovery, research and qualification",
     callcenter: "Understand, retrieve, act, resolve or hand off",
@@ -105,6 +109,7 @@ export const comparison = [
     label: "Output",
     platform: "Agentic workflows and actions",
     stack: "Evidence, analysis, visualisations and presentations",
+    solve: "A branching argument with verdicts",
     wargame: "Scenario distributions and strategic options",
     funnel: "Evidence-backed opportunities",
     callcenter: "Resolution, action or context-rich human escalation",
@@ -116,6 +121,7 @@ export const comparison = [
     label: "Channels",
     platform: "Events, APIs and operational interfaces",
     stack: "Analytical environments and presentations",
+    solve: "Research chat, logic tree and evolution pane",
     wargame: "Strategic briefs and simulation outputs",
     funnel: "Research sources and approved outreach",
     callcenter: "Voice, WhatsApp, SMS, email, Teams, Slack, Salesforce",
@@ -127,6 +133,7 @@ export const comparison = [
     label: "Human role",
     platform: "Oversight and escalation",
     stack: "Review and interpretation",
+    solve: "Review verdicts and what remains open",
     wargame: "Assumption review and strategic judgement",
     funnel: "Approval and relationship building",
     callcenter: "Judgement, takeover and the work that still needs a person",
@@ -440,6 +447,116 @@ export const products: Product[] = [
     ],
   },
   {
+    slug: "solve",
+    name: "Solve",
+    fullName: "Linear Horizon Solve",
+    tier: "application",
+    domain: "Research",
+    category: "Agentic Hard-Problem Research",
+    verb: "Solve",
+    intelligence: "Research intelligence",
+    framing: "Agents that reason",
+    shortDescription:
+      "An agentic research system for hard logical problems: a branching ledger of logic, hypotheses, evidence, acceptance and rejection, with first-class mathematics and genetic evolution of idea variants.",
+    landingLine: "Chat may narrate. The tree is the ledger.",
+    headline: "Open a hard problem. Keep the argument on the tree.",
+    support:
+      "Point Solve at a Millennium statement, a Kaggle-style modelling question, or a precise conjecture. It records claims on a branching tree, grades evolved variants, and refuses unearned certainty — literature and a logic kernel, not a warehouse.",
+    overview: [
+      "Solve is a research product for hard logical problems. The visible layer is a chat window; the system of record is a branching ledger of logic, hypotheses, evidence, acceptance and rejection. Chat may narrate. Nothing stands unless it is on the tree.",
+      "It is not Stack. Stack investigates open-ended questions against organisational data. Solve investigates claims: it gathers scholarly and web evidence, keeps mathematics as first-class markdown and MathML, and uses a logic kernel that will refuse an unearned QED.",
+      "An Evolution pane runs a genetic algorithm over idea variants. The language model grades them; the service mutates, crosses and breeds descendants; champions can be promoted onto the tree. The argument remains inspectable, including what is still open.",
+    ],
+    seoTitle: "Solve | Agentic Hard-Problem Research | Linear Horizon",
+    seoDescription:
+      "Linear Horizon Solve is an agentic research system for hard logical problems — a branching ledger of logic, hypotheses, evidence and verdicts, with first-class mathematics and genetic evolution of idea variants.",
+    primaryCta: { label: "Discuss Solve", href: "/contact?interest=solve" },
+    secondaryCta: { label: "See how it works", href: "#how-it-works" },
+    closingQuestion:
+      "Have a claim that needs a branching argument rather than a vibes answer?",
+    capabilities: [
+      {
+        id: "01",
+        title: "Logic tree ledger",
+        body: "Record claims as a branching tree of logic, hypotheses and evidence — the transcript is not the argument.",
+      },
+      {
+        id: "02",
+        title: "Accept and reject",
+        body: "Attach a verdict and a rationale to a node, and reopen it when new evidence arrives.",
+      },
+      {
+        id: "03",
+        title: "First-class mathematics",
+        body: "Write mathematics as markdown and MathML, sanitised and rendered in the tree, the chat and evolved variants.",
+      },
+      {
+        id: "04",
+        title: "Genetic evolution",
+        body: "Seed idea variants, let the model grade them, mutate and cross descendants, and promote champions onto the tree.",
+      },
+      {
+        id: "05",
+        title: "Logic kernel",
+        body: "Classify claims, generate consequences, and refuse a QED the proof-state has not earned.",
+      },
+      {
+        id: "06",
+        title: "Scholarly evidence",
+        body: "Search the literature and the web — Wikipedia, PubMed, OpenAlex, Crossref, Semantic Scholar and related sources — as evidence, not as theorems.",
+      },
+    ],
+    useCases: [
+      {
+        id: "01",
+        title: "Open conjectures",
+        problem:
+          "A Millennium-class statement or an open conjecture needs a reviewable argument, not a confident paragraph in a chat.",
+        approach:
+          "Solve keeps the claim on a tree: hypotheses, logic, evidence, acceptance and rejection, with what remains open left open.",
+      },
+      {
+        id: "02",
+        title: "Modelling claims",
+        problem:
+          "A Kaggle-style question is treated as a vibe — a feature seems important — rather than as a falsifiable claim.",
+        approach:
+          "Record the modelling claim, gather evidence, accept or reject it, and keep the surviving argument on the ledger.",
+      },
+      {
+        id: "03",
+        title: "Proof sketching",
+        problem:
+          "A sketch looks finished in prose while the checker would still refuse the last step.",
+        approach:
+          "The logic kernel holds proof-state. Unearned certainty is refused; accepted nodes carry a rationale a person can review.",
+      },
+      {
+        id: "04",
+        title: "Evolving approaches",
+        problem:
+          "Candidate lemmas and methods multiply in a transcript, and it is unclear which survived a fair comparison.",
+        approach:
+          "A genetic algorithm mutates and grades variants against an explicit rubric, then promotes champions onto the tree.",
+      },
+    ],
+    process: [
+      { id: "01", title: "Open problem" },
+      { id: "02", title: "Form claims" },
+      { id: "03", title: "Gather evidence" },
+      { id: "04", title: "Accept or reject" },
+      { id: "05", title: "Evolve variants" },
+      { id: "06", title: "Promote champion" },
+    ],
+    limits: [
+      "Solve does not prove open Millennium conjectures. An accepted node is a reasoned verdict, not a theorem.",
+      "Literature and web search are evidence, not proofs. A citation can support a claim; it cannot close one on its own.",
+      "Genetic-algorithm descendants come from the evolution service. Chat does not invent a population by narrating one.",
+      "Human review remains. The tree is a ledger a person can challenge, including what the system has left open.",
+      "The default Solve agent has no warehouse credentials. Organisational data investigation is Stack.",
+    ],
+  },
+  {
     slug: "wargame",
     name: "Wargame",
     fullName: "Linear Horizon Wargame",
@@ -450,19 +567,19 @@ export const products: Product[] = [
     intelligence: "Strategic intelligence",
     framing: "Agents that strategise",
     shortDescription:
-      "An agentic strategy and scenario simulation system that models actors, incentives and possible responses under uncertainty.",
-    landingLine: "Explore how a strategy might play out.",
-    headline: "Model the actors. Simulate the outcomes. Improve the strategy.",
+      "An agentic strategy system that models actors, incentives and possible responses, then simulates how they interact — a machine that can predict the future.",
+    landingLine: "A machine that can predict the future.",
+    headline: "A machine that can predict the future.",
     support:
-      "Wargame builds an explicit model of a strategic environment, simulates possible interactions and helps identify actions that may improve the likelihood of the outcome you want.",
+      "Wargame builds an explicit model of a strategic environment, simulates possible interactions, and estimates which futures are more likely — and which actions may improve the outcome you want.",
     overview: [
-      "Wargame is an agentic strategy and scenario simulation system. It creates a model of the relevant actors in a strategic environment — competitors, customers, regulators, partners, political actors, market participants, internal stakeholders — and the incentives, goals, constraints and relationships that shape what they may do.",
-      "Strategy is a system of interacting actors. Wargame attempts to model those actors and explore how their decisions may interact. It can then run large numbers of possible scenarios, using Monte Carlo simulation where appropriate, to estimate a distribution of outcomes rather than a single forecast.",
-      "The aim is not to predict the future with certainty. It is to make assumptions explicit, explore their consequences at scale, and help you see risks, opportunities, influential variables and actions that may shift the distribution.",
+      "Wargame is a machine that can predict the future. It creates a model of the relevant actors in a strategic environment — competitors, customers, regulators, partners, political actors, market participants, internal stakeholders — and the incentives, goals, constraints and relationships that shape what they may do.",
+      "Strategy is a system of interacting actors. Wargame models those actors and explores how their decisions may interact. It then runs large numbers of possible scenarios, using Monte Carlo simulation where appropriate, to estimate a distribution of outcomes rather than a single point forecast.",
+      "The prediction is a distribution, not an oracle. Wargame makes the assumptions explicit, explores their consequences at scale, and helps you see which futures appear more often, which variables drive them, and which actions may shift the result.",
     ],
-    seoTitle: "Wargame | Agentic Strategy & Simulation | Linear Horizon",
+    seoTitle: "Wargame | A Machine That Can Predict the Future | Linear Horizon",
     seoDescription:
-      "Linear Horizon Wargame models actors, incentives and possible responses, then runs repeated simulations to explore how different strategies may change the distribution of outcomes.",
+      "Linear Horizon Wargame is a machine that can predict the future. It models actors, incentives and possible responses, then runs repeated simulations to estimate how a strategy may unfold.",
     primaryCta: {
       label: "Discuss a scenario",
       href: "/contact?interest=wargame",
@@ -558,7 +675,7 @@ export const products: Product[] = [
     ],
     limits: [
       "Simulations depend on model assumptions. A refined actor model is more useful than a precise-looking number.",
-      "Probabilities are conditional estimates, not forecasts of what will happen.",
+      "Probabilities are conditional on the model. A prediction is only as good as the assumptions it rests on.",
       "Actor models need review. Human experts should be able to inspect and correct the incentives and constraints.",
       "Uncertainty should be visible. Sensitivity is part of the result, not a footnote.",
     ],

@@ -222,6 +222,10 @@ export function productExtras(slug: ProductSlug) {
       return { layers: platformLayers, chatToAction };
     case 'stack':
       return { questions: stackQuestions, example: stackExample };
+    case 'solve':
+    case 'query':
+    case 'chat':
+      return {};
     case 'wargame':
       return { examples: wargameExamples, distribution: wargameDistribution };
     case 'funnel':
@@ -277,9 +281,6 @@ export function productExtras(slug: ProductSlug) {
         governance: callcenterGovernance,
         architecture: callcenterArchitecture,
       };
-    case 'query':
-    case 'chat':
-      return {};
     default: {
       const _exhaustive: never = slug;
       return _exhaustive;

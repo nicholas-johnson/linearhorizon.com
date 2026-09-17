@@ -206,7 +206,7 @@ export const distinctions = [
   {
     id: '02',
     title: 'The workflow is encoded',
-    body: 'A general agent improvises a path each time, or follows a skill you wrote. Funnel, Stack, Wargame and Callcenter have a closed process, typed outputs and state transitions. That is the difference between a capable run and a system you can operate.',
+    body: 'A general agent improvises a path each time, or follows a skill you wrote. Funnel, Stack, Solve, Wargame and Callcenter have a closed process, typed outputs and state transitions. That is the difference between a capable run and a system you can operate.',
   },
   {
     id: '03',

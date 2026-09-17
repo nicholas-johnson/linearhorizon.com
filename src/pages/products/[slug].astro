@@ -12,6 +12,7 @@ import FunnelBody from '../../components/products/funnel/Body.astro';
 import CallcenterBody from '../../components/products/callcenter/Body.astro';
 import QueryBody from '../../components/products/query/Body.astro';
 import ChatBody from '../../components/products/chat/Body.astro';
+import SolveBody from '../../components/products/solve/Body.astro';
 import { products, productHref } from '../../data/products';
 import type { Product } from '../../data/products';
 import { site } from '../../data/site';
@@ -55,6 +56,7 @@ const breadcrumbLd = {
     <ProductNav class="mt-14" />
     {product.slug === 'platform' && <PlatformBody product={product} />}
     {product.slug === 'stack' && <StackBody product={product} />}
+    {product.slug === 'solve' && <SolveBody product={product} />}
     {product.slug === 'wargame' && <WargameBody product={product} />}
     {product.slug === 'funnel' && <FunnelBody product={product} />}
     {product.slug === 'callcenter' && <CallcenterBody product={product} />}

@@ -1,10 +1,7 @@
 ---
 import ProductLine from '../brand/ProductLine.astro';
-import {
-  productHref,
-  getFoundationProducts,
-  getApplicationProducts,
-} from '../../data/products';
+import GridFrame from '../diagrams/GridFrame.astro';
+import { getFoundationProducts, getApplicationProducts } from '../../data/products';
 
 interface Props {
   caption?: string;
@@ -13,60 +10,18 @@ interface Props {
 const { caption = 'Figure · Product system' } = Astro.props;
 const foundation = getFoundationProducts();
 const applications = getApplicationProducts();
+const foundationNames = foundation.map((product) => product.name).join(', ');
+const applicationNames = applications.map((product) => product.name).join(', ');
+const verb = foundation.length === 1 ? 'is' : 'are';
+const figcaption = `Linear Horizon products as one system. ${foundationNames} ${verb} the agentic foundation. ${applicationNames} apply that foundation to analysis, research, strategy, growth, customer service, measurement and conversation.`;
 ---
 
-<div>
+<figure>
   <p class="mb-4 font-mono text-[11px] tracking-[0.18em] text-muted">{caption}</p>
-  <ProductLine />
-
-  <div class="mt-12 border-t border-hairline">
-    <p class="pt-6 font-mono text-[11px] tracking-[0.18em] text-muted">Foundation</p>
-    {
-      foundation.map((product) => (
-        <a
-          href={productHref(product.slug)}
-          class="group grid gap-4 border-b border-hairline py-8 no-underline md:grid-cols-[8rem_minmax(0,14rem)_1fr] md:items-end"
-        >
-          <p class="font-mono text-[11px] tracking-[0.18em] text-horizon-600">{product.name}</p>
-          <div>
-            <p class="text-[1.25rem] font-medium tracking-tight text-ink group-hover:text-horizon-600">
-              {product.intelligence}
-            </p>
-            <p class="mt-2 font-mono text-[11px] tracking-[0.14em] text-muted">{product.category}</p>
-          </div>
-          <p class="max-w-md text-[1.02rem] leading-relaxed text-muted">{product.landingLine}</p>
-        </a>
-      ))
-    }
-
-    <p class="pt-8 font-mono text-[11px] tracking-[0.18em] text-muted">Applications</p>
-    <ol class="mt-2 grid grid-cols-1 border-t border-hairline sm:grid-cols-2 xl:grid-cols-4">
-      {
-        applications.map((product, index) => (
-          <li
-            class:list={[
-              'border-hairline py-8',
-              'border-b xl:border-b-0',
-              index % 2 === 0 && 'sm:border-r sm:pr-8',
-              index % 2 === 1 && 'sm:pl-8',
-              index >= 2 && 'sm:border-b-0',
-              index < 3 && 'xl:border-r xl:pr-8 xl:pl-8',
-              index === 0 && 'xl:pl-0',
-            ]}
-          >
-            <a href={productHref(product.slug)} class="group block no-underline">
-              <p class="font-mono text-[11px] tracking-[0.18em] text-muted">{product.name}</p>
-              <p class="mt-3 font-mono text-[11px] tracking-[0.14em] text-horizon-600">{product.domain}</p>
-              <p class="mt-4 text-[1.08rem] font-medium tracking-tight text-ink group-hover:text-horizon-600">
-                {product.landingLine}
-              </p>
-              <p class="mt-6 font-mono text-[11px] tracking-[0.16em] text-graphite-600">
-                {product.verb}
-              </p>
-            </a>
-          </li>
-        ))
-      }
-    </ol>
-  </div>
-</div>
+  <GridFrame class="overflow-hidden bg-paper">
+    <div class="px-5 py-5 md:px-8 md:py-6">
+      <ProductLine />
+    </div>
+  </GridFrame>
+  <figcaption class="sr-only">{figcaption}</figcaption>
+</figure>

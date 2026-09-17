@@ -1,0 +1,52 @@
+---
+import type { Product } from '../../../data/products';
+import CapabilityGrid from '../CapabilityGrid.astro';
+import UseCases from '../UseCases.astro';
+import Limits from '../Limits.astro';
+import ProcessFlow from '../ProcessFlow.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Chat may narrate. The tree is the ledger.</p>
+  <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
+    {product.overview.map((paragraph) => <p>{paragraph}</p>)}
+    <p>
+      A research chat that only talks will sound finished while the argument is still a transcript. Solve
+      keeps the work on a tree you can accept, reject and reopen — so a person can see what was earned,
+      and what was not.
+    </p>
+  </div>
+</section>
+
+<section id="how-it-works" class="mt-20 scroll-mt-10">
+  <div class="mb-8 max-w-2xl">
+    <p class="font-mono text-[11px] tracking-[0.18em] text-muted">How a problem is worked</p>
+    <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
+      Open a claim. Record the argument. Leave open what is not earned.
+    </h2>
+    <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
+      A problem is opened as a tree. Hypotheses, logic and evidence are added as nodes; verdicts carry a
+      rationale. Variants can be evolved and graded, then promoted onto the ledger if they survive. The
+      kernel will not stamp a QED the proof-state has not earned.
+    </p>
+  </div>
+  <ProcessFlow steps={product.process} />
+</section>
+
+<div class="mt-20">
+  <CapabilityGrid items={product.capabilities} caption="What Solve keeps on the tree" />
+</div>
+
+<div class="mt-24">
+  <UseCases items={product.useCases} title="Where Solve is used." />
+</div>
+
+<div class="mt-24">
+  <Limits items={product.limits} title="A ledger of an argument, not a proof of an open conjecture." />
+</div>

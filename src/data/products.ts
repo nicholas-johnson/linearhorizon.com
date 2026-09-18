@@ -57,6 +57,7 @@ export interface Product {
   useCases: ProductUseCase[];
   process: ProcessStep[];
   limits: string[];
+  operatingSystem?: string;
 }
 
 export const productFamily = {
@@ -75,7 +76,7 @@ export const comparison = [
     stack: "Investigate your data",
     solve: "Search programmes of attack on a hard claim",
     wargame: "Predict the future",
-    funnel: "Find customers",
+    funnel: "Local agentic CRM",
     callcenter: "Serve customers",
     query: "Measure product usage",
     chat: "Talk to your agents",
@@ -123,7 +124,7 @@ export const comparison = [
     stack: "Analytical environments and presentations",
     solve: "Research chat, node agents, run controls",
     wargame: "Strategic briefs and simulation outputs",
-    funnel: "Research sources and approved outreach",
+    funnel: "Desktop app; local CRM data",
     callcenter: "Voice, WhatsApp, SMS, email, Teams, Slack, Salesforce",
     query: "Dashboards, event API and MCP",
     chat: "Web chat, voice and token streaming",
@@ -686,24 +687,25 @@ export const products: Product[] = [
     fullName: "Linear Horizon Funnel",
     tier: "application",
     domain: "Growth",
-    category: "Agentic Sales Intelligence",
+    category: "Agentic CRM",
     verb: "Discover",
-    intelligence: "Sales intelligence",
-    framing: "Agents that find customers",
+    intelligence: "CRM",
+    framing: "A local agentic CRM",
     shortDescription:
-      "An agentic B2B prospecting system that researches organisations, finds evidence of buying intent and prepares qualified outreach for human approval.",
-    landingLine: "Research the market. Sales is an engineering challenge.",
+      "A desktop agentic CRM that researches organisations, qualifies opportunities and drafts outreach locally. Your data never leaves your desktop.",
+    landingLine: "Your data never leaves your desktop.",
     headline: "Find the companies that need you.",
     support:
-      "Funnel continuously researches your market, identifies evidence of buying intent and turns promising organisations into qualified, evidence-backed opportunities.",
+      "Funnel is a desktop agentic CRM. It researches your market, finds evidence of buying intent and turns promising organisations into qualified opportunities — entirely on your machine. Your data never leaves your desktop.",
     overview: [
-      "Funnel turns B2B prospecting into an agentic research workflow. It starts with the organisations you actually want to work with, then investigates whether there is a genuine current need — and only then prepares an approach.",
-      "It is not a bulk email tool. Conventional outbound buys a list, filters by job title and sends at volume. Funnel is built against that model. The expensive part of good prospecting is not sending a message. It is understanding who is worth contacting, and why.",
+      "Funnel is a desktop agentic CRM. It runs entirely on your machine. Pipeline, contacts, research and drafts stay local. Your data never leaves your desktop.",
+      "It is not a bulk email tool, and it is not a cloud CRM. Conventional outbound buys a list, filters by job title and sends at volume. Funnel is built against both models. The expensive part of good prospecting is not sending a message. It is understanding who is worth contacting, and why.",
       "The workflow is simple to state: find the right company, understand why they might buy, and know what to say. Someone on your team decides whether to make contact.",
     ],
-    seoTitle: "Funnel | Agentic Sales Intelligence | Linear Horizon",
+    seoTitle: "Funnel | Desktop Agentic CRM | Linear Horizon",
     seoDescription:
-      "Linear Horizon Funnel is an agentic B2B prospecting system. It researches organisations, finds evidence of buying intent and prepares qualified, evidence-backed outreach for human approval.",
+      "Linear Horizon Funnel is a desktop agentic CRM. It researches organisations, finds evidence of buying intent and prepares qualified outreach — all locally. Your data never leaves your desktop.",
+    operatingSystem: "Desktop",
     primaryCta: { label: "Discuss Funnel", href: "/contact?interest=funnel" },
     secondaryCta: { label: "See how it works", href: "#how-it-works" },
     closingQuestion:
@@ -711,61 +713,66 @@ export const products: Product[] = [
     capabilities: [
       {
         id: "01",
+        title: "Runs on your desktop",
+        body: "Funnel is a desktop application. The CRM, the research and the drafts stay on your machine. Your data never leaves your desktop.",
+      },
+      {
+        id: "02",
         title: "Ideal customer profile",
         body: "Start from the organisations you actually want — geography, industry, scale, stack and priorities — then investigate.",
       },
       {
-        id: "02",
+        id: "03",
         title: "Continuous discovery",
         body: "Find organisations that match the profile across configured public, licensed and customer-connected sources.",
       },
       {
-        id: "03",
+        id: "04",
         title: "Signal detection",
         body: "Look for evidence that something is happening now that makes a conversation more relevant.",
       },
       {
-        id: "04",
+        id: "05",
         title: "Buyer identification",
         body: "Identify the roles most likely to own the problem, influence the decision or control the budget.",
       },
       {
-        id: "05",
+        id: "06",
         title: "Qualification",
         body: "Combine fit, intent, timing and proposition into a reviewable opportunity score.",
       },
       {
-        id: "06",
+        id: "07",
         title: "Offer matching",
         body: "Choose the proposition that appears most relevant to the observed need, rather than sending one message to everyone.",
       },
       {
-        id: "07",
+        id: "08",
         title: "Evidence-backed briefing",
         body: "Preserve the reasons and sources so a person can verify why the opportunity was recommended.",
       },
       {
-        id: "08",
+        id: "09",
         title: "Drafted approach",
         body: "Prepare a concise, evidence-based outreach draft. Personalisation means understanding the prospect, rather than greeting them by title.",
       },
       {
-        id: "09",
+        id: "10",
         title: "Human approval",
         body: "Automate research up to the relationship. Someone on your team approves, edits or skips before anyone is contacted.",
       },
       {
-        id: "10",
+        id: "11",
         title: "Controlled follow-up",
         body: "Schedule appropriate follow-up, stop on a reply, suppress declines and recognise when the answer is not now.",
       },
       {
-        id: "11",
+        id: "12",
         title: "Response classification",
         body: "Sort outcomes so the next action is clear: take over, wait, find another person, or stop.",
       },
       {
-        id: "12",
+        id: "13",
         title: "Learning from outcomes",
         body: "See which signals, roles and propositions actually create conversations — and use that to refine how Funnel is configured.",
       },
@@ -819,6 +826,7 @@ export const products: Product[] = [
       { id: "12", title: "Learn" },
     ],
     limits: [
+      "Funnel is a desktop application. It runs locally. Your data never leaves your desktop.",
       "A score is a prioritisation mechanism, not an objective probability that someone will buy.",
       "Recommendations depend on the quality of the ICP, the available sources and the evidence those sources contain.",
       "Your team remains responsible for high-value relationship decisions. Funnel drafts; it does not send on its own as a matter of product principle.",

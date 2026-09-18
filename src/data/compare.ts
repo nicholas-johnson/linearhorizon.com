@@ -211,7 +211,7 @@ export const distinctions = [
   {
     id: '03',
     title: 'Shared work, not a personal roster',
-    body: 'A reviewer can open the same opportunity queue as a colleague. Roles, isolation and an activity log are part of the product, not a side-effect of who owns the laptop.',
+    body: 'A reviewer can open the same opportunity, case or scenario as a colleague. Roles, isolation and an activity log are part of the product. Funnel keeps the CRM on the desktop: the pipeline stays on the machine, not in a cloud tenant.',
   },
   {
     id: '04',
@@ -260,7 +260,7 @@ export const together = {
 export const limits = [
   'This is a comparison of product shape, not a model benchmark. We do not claim that Linear Horizon out-reasons Claude or Grok on a single task.',
   'On one-off research, drafting and work inside existing SaaS interfaces, Cowork and Grok Bot are often faster to start. That is their job.',
-  'Linear Horizon is not a consumer desktop agent. It is not a substitute for Claude Chat, Claude Code, or a personal Grok Bot roster.',
+  'Linear Horizon is not a general consumer desktop agent. Funnel is a local desktop CRM for a specific workflow; it is not a substitute for Claude Chat, Claude Code, or a personal Grok Bot roster.',
   'Linear Horizon products are delivered as engagements rather than self-serve seats. That is a genuine difference, not a slogan for exclusivity.',
   'Public agent products move quickly. The descriptions above follow how Anthropic and xAI describe Cowork and Grok Bot. They are not a complete catalogue of either product.',
 ] as const;
@@ -274,7 +274,7 @@ export const faqs = [
   {
     question: 'Can Claude or Grok Bot do sales prospecting?',
     answer:
-      'They can research accounts and draft outreach. They do not give you a shared pipeline with an ideal customer profile, evidence records, scoring, suppression and approval as a system of record. That is what Funnel is.',
+      'They can research accounts and draft outreach. They do not give you a local CRM with an ideal customer profile, evidence records, scoring, suppression and approval as a system of record. Funnel is a desktop agentic CRM. Your data never leaves your desktop.',
   },
   {
     question: 'Can Linear Horizon use Claude or Grok models?',

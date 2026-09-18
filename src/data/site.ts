@@ -306,7 +306,7 @@ export const engagementStarts = [
   { title: 'Connect Stack to an analytical environment', href: '/products/stack' },
   { title: 'Use Solve for a hard logical problem', href: '/products/solve' },
   { title: 'Use Wargame to predict how a decision may play out', href: '/products/wargame' },
-  { title: 'Use Funnel to research and qualify a market', href: '/products/funnel' },
+  { title: 'Use Funnel as a local desktop CRM', href: '/products/funnel' },
   { title: 'Use Callcenter for agentic customer service', href: '/products/callcenter' },
   { title: 'Compare Claude, Grok Bot and Linear Horizon', href: '/compare' },
 ] as const;

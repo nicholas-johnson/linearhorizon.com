@@ -19,6 +19,7 @@ export default defineConfig({
     '/claude-vs-grok-bot': '/compare',
     '/claude-vs-grokbot': '/compare',
     '/whitepapers/four-stages-of-claude-adoption': '/whitepapers/four-stages-of-ai-adoption',
+    '/whitepapers/what-is-an-agent': '/insights/what-is-an-agent',
   },
   vite: {
     plugins: [tailwindcss()],

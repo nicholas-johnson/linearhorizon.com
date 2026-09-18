@@ -2,28 +2,6 @@
 title: What is an agent? What does it mean to be agentic?
 description: An agent is an LLM, plus a prompt, plus tools — placed inside a loop that lets it pursue a goal. To be agentic is to give a system limited discretion over how that goal is achieved.
 pubDate: 2026-09-18
-kicker: Linear Horizon whitepaper
-contents:
-  - id: from-answers-to-actions
-    label: From answers to actions
-  - id: the-three-essential-parts
-    label: The three essential parts
-  - id: what-makes-a-system-agentic
-    label: What makes a system agentic
-  - id: agentic-workflows-are-not-the-same-as-automation
-    label: Agency and automation
-  - id: an-example-a-programme-management-agent
-    label: A programme-management agent
-  - id: autonomy-is-not-the-absence-of-control
-    label: Autonomy and control
-  - id: agents-can-work-together
-    label: Agents can work together
-  - id: the-real-test
-    label: The real test
-  - id: a-compact-definition
-    label: A compact definition
-  - id: about-linear-horizon
-    label: About Linear Horizon
 ---
 
 An agent is an LLM, plus a prompt, plus tools.
@@ -208,7 +186,3 @@ The LLM reasons. The prompt gives it purpose and boundaries. The tools allow it 
 To be agentic is not simply to use AI. It is to give an AI system limited discretion over how a goal is achieved.
 
 That is the shift now taking place in software: from systems that wait for every instruction to systems that can take the next sensible step.
-
-## About Linear Horizon
-
-Linear Horizon helps organisations move from AI experimentation to practical, governed workflows. We combine training, workflow design and technical implementation to help teams adopt AI with confidence—and turn promising tools into dependable business capabilities.

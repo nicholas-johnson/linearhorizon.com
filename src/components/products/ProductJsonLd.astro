@@ -14,7 +14,7 @@ const jsonLd = {
   '@type': 'SoftwareApplication',
   name: product.fullName,
   applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Web',
+  operatingSystem: product.operatingSystem ?? 'Web',
   url: new URL(productHref(product.slug), site.url).toString(),
   description: product.seoDescription,
   provider: {

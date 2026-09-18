@@ -299,6 +299,7 @@ export const engagementStarts = [
   { title: 'Bring Linear Horizon in for AI architecture', href: '/consulting' },
   { title: 'Read the AI adoption whitepaper', href: '/whitepapers/four-stages-of-ai-adoption' },
   { title: 'Read the agentic workflows whitepaper', href: '/whitepapers/how-silicon-valley-is-approaching-fully-agentic-workflows' },
+  { title: 'Read the product-as-expert whitepaper', href: '/whitepapers/the-product-as-its-own-expert' },
   { title: 'Commission a bespoke application', href: '/build' },
   { title: 'Deploy a Linear Horizon product', href: '/products' },
   { title: 'Customise Platform around a specific workflow', href: '/products/platform' },

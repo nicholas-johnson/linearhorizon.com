@@ -36,6 +36,14 @@ const whitepapers = defineCollection({
         }),
       )
       .optional(),
+    hero: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+        width: z.number(),
+        height: z.number(),
+      })
+      .optional(),
   }),
 });
 

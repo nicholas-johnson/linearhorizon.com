@@ -13,13 +13,13 @@ const { product } = Astro.props;
 ---
 
 <section class="mt-20 grid gap-10 border-t border-hairline pt-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Chat may narrate. The tree is the ledger.</p>
+  <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Start a run. The tree is the ledger.</p>
   <div class="max-w-2xl space-y-5 text-[1.05rem] leading-relaxed text-muted">
     {product.overview.map((paragraph) => <p>{paragraph}</p>)}
     <p>
-      A research chat that only talks will sound finished while the argument is still a transcript. Solve
-      keeps the work on a tree you can accept, reject and reopen — so a person can see what was earned,
-      and what was not.
+      A research chat that only talks will sound finished while the argument is still a transcript.
+      Solve puts an agent on every node, scores the frontier, and lets a run expand what looks
+      promising — so a person can pause, inspect, and see what was earned.
     </p>
   </div>
 </section>
@@ -28,19 +28,20 @@ const { product } = Astro.props;
   <div class="mb-8 max-w-2xl">
     <p class="font-mono text-[11px] tracking-[0.18em] text-muted">How a problem is worked</p>
     <h2 class="mt-3 text-[1.35rem] font-medium tracking-tight">
-      Open a claim. Record the argument. Leave open what is not earned.
+      Open a claim. Wake node agents. Leave open what is not earned.
     </h2>
     <p class="mt-4 text-[1.02rem] leading-relaxed text-muted">
-      A problem is opened as a tree. Hypotheses, logic and evidence are added as nodes; verdicts carry a
-      rationale. Variants can be evolved and graded, then promoted onto the ledger if they survive. The
-      kernel will not stamp a QED the proof-state has not earned.
+      A problem is opened as a tree. Each node inherits a forked axiom session and its own agent.
+      Start a run: the service ranks open nodes by score and interest, wakes one agent, and that
+      agent ideates, Horn-generates, or GA-mixes a child — then evaluates it. The kernel will not
+      stamp a QED the proof-state has not earned. Unattended is search. A human can pause.
     </p>
   </div>
   <ProcessFlow steps={product.process} />
 </section>
 
 <div class="mt-20">
-  <CapabilityGrid items={product.capabilities} caption="What Solve keeps on the tree" />
+  <CapabilityGrid items={product.capabilities} caption="What a node agent can do" />
 </div>
 
 <div class="mt-24">
@@ -48,5 +49,5 @@ const { product } = Astro.props;
 </div>
 
 <div class="mt-24">
-  <Limits items={product.limits} title="A ledger of an argument, not a proof of an open conjecture." />
+  <Limits items={product.limits} title="Unattended search, not a proof of an open conjecture." />
 </div>

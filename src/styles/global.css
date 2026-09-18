@@ -217,4 +217,21 @@
   .article-body > p:first-of-type {
     color: var(--color-ink);
   }
+
+  .article-body .footnotes {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-rule);
+    font-size: 0.95rem;
+  }
+
+  .article-body .footnotes ol {
+    list-style: decimal;
+  }
+
+  .article-body [data-footnote-ref] {
+    font-family: var(--font-mono);
+    font-size: 0.72em;
+    letter-spacing: 0.04em;
+  }
 }

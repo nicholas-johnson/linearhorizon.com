@@ -19,6 +19,8 @@ const { Content } = await render(paper);
 
 const pageUrl = new URL(`/whitepapers/${paper.id}/`, Astro.site).toString();
 const published = paper.data.pubDate.toISOString();
+const hero = paper.data.hero;
+const articleImage = new URL(hero?.src ?? '/og.png', Astro.site).toString();
 
 const articleLd = {
   '@context': 'https://schema.org',
@@ -30,7 +32,7 @@ const articleLd = {
   url: pageUrl,
   mainEntityOfPage: pageUrl,
   genre: 'Whitepaper',
-  image: new URL('/og.png', Astro.site).toString(),
+  image: articleImage,
   author: {
     '@type': 'Organization',
     '@id': `${site.url}/#organisation`,
@@ -64,6 +66,10 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', {
   title={paper.data.title}
   description={paper.data.description}
   ogType="article"
+  ogImage={hero?.src}
+  ogImageAlt={hero?.alt}
+  ogImageWidth={hero?.width}
+  ogImageHeight={hero?.height}
 >
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(articleLd)} />
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
@@ -79,6 +85,21 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', {
     <h1 class="mt-4 max-w-3xl text-[2rem] leading-[1.15] font-medium tracking-tight md:text-[2.5rem]">
       {paper.data.title}
     </h1>
+
+    {
+      hero && (
+        <figure class="mt-12 max-w-5xl overflow-hidden border border-hairline bg-paper">
+          <img
+            src={hero.src}
+            alt={hero.alt}
+            width={hero.width}
+            height={hero.height}
+            class="block h-auto w-full"
+            decoding="async"
+          />
+        </figure>
+      )
+    }
 
     {
       paper.data.stages && (

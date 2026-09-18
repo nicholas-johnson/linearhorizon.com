@@ -693,7 +693,7 @@ export const products: Product[] = [
     framing: "A local agentic CRM",
     shortDescription:
       "A desktop agentic CRM that researches organisations, qualifies opportunities and drafts outreach locally. Your data never leaves your desktop.",
-    landingLine: "A desktop app. All local. Your data never leaves your desktop.",
+    landingLine: "Your data never leaves your desktop.",
     headline: "Find the companies that need you.",
     support:
       "Funnel is a desktop agentic CRM. It researches your market, finds evidence of buying intent and turns promising organisations into qualified opportunities — entirely on your machine. Your data never leaves your desktop.",

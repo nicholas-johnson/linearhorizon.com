@@ -60,8 +60,8 @@ export const subjects: CompareSubject[] = [
     verb: 'Operate',
     category: 'Organisational systems',
     oneLiner:
-      'Platform plus specialist applications. The workflow is encoded. State is inspectable. High-value actions remain a human decision.',
-    body: 'Linear Horizon is not a personal agent you prompt. It is a foundation for agentic systems, and a set of products that apply that foundation to analysis, strategy, growth and customer service — with training, architecture and delivery as the same practice.',
+      'An operating system for AI, plus specialist applications. The workflow is encoded. State is inspectable. High-value actions remain a human decision.',
+    body: 'Linear Horizon is not a personal agent you prompt. It is an operating system for AI, and a set of specialist applications that apply that system to analysis, strategy, growth and customer service — with training, architecture and delivery as the same practice.',
     href: '/products',
   },
 ];

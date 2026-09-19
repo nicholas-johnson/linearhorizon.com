@@ -71,7 +71,7 @@ export const pages: SitePage[] = [
     path: '/products',
     title: 'AI Products | Platform and specialist applications | Linear Horizon',
     description:
-      'Linear Horizon Platform provides the agentic foundation. Specialist applications apply agentic AI to analysis, research, strategy, growth and customer service.',
+      'Linear Horizon Platform is an operating system for AI. Specialist applications apply it to analysis, research, strategy, growth and customer service.',
     kicker: '05 / Products',
     body: [
       'You do not have to choose between a product and an engagement. Platform and the specialist applications can be deployed as they are, adapted to existing systems, extended, or combined with consultancy and training. They exist so that not every piece of work starts from a blank page.',

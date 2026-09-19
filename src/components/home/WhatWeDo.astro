@@ -35,9 +35,9 @@ import { products, productHref } from '../../data/products';
     </div>
     <div class="py-10 md:py-12 md:pl-12">
       <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">Products</p>
-      <h2 class="mt-4 text-[1.35rem] font-medium tracking-tight">Platform. Then the applications.</h2>
+      <h2 class="mt-4 text-[1.35rem] font-medium tracking-tight">An operating system. Then the applications.</h2>
       <p class="mt-4 max-w-md text-[1.02rem] leading-relaxed text-muted">
-        Linear Horizon Platform is the foundation. Specialist applications apply the same agentic principles to analysis, research, strategy, growth and customer service.
+        Linear Horizon Platform is an operating system for AI. Specialist applications apply it to analysis, research, strategy, growth and customer service.
       </p>
       <ol class="mt-8 space-y-4">
         {
@@ -46,7 +46,11 @@ import { products, productHref } from '../../data/products';
               <a href={productHref(product.slug)} class="group block no-underline">
                 <p class="font-mono text-[11px] tracking-[0.16em] text-muted">{product.name}</p>
                 <p class="mt-1 text-[1.02rem] tracking-tight text-ink group-hover:text-cobalt">
-                  {product.framing}. {product.landingLine}
+                  {
+                    product.landingLine.replace(/\.$/, '') === product.framing
+                      ? product.landingLine
+                      : `${product.framing}. ${product.landingLine}`
+                  }
                 </p>
               </a>
             </li>

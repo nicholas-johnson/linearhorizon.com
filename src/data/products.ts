@@ -64,15 +64,15 @@ export const productFamily = {
   kicker: "Linear Horizon Products",
   headline: "Agentic systems for real organisational work.",
   support:
-    "Linear Horizon Platform provides the foundation. Specialist products then apply agentic AI to analysis, research, strategy, growth and customer service.",
-  model: "Foundation. Applications.",
+    "Linear Horizon Platform is an operating system for AI. Specialist products then apply that system to analysis, research, strategy, growth and customer service.",
+  model: "Operating system. Applications.",
 } as const;
 
 export const comparison = [
   {
     id: "purpose",
     label: "Purpose",
-    platform: "Run agentic systems",
+    platform: "An operating system for AI",
     stack: "Investigate your data",
     solve: "Search programmes of attack on a hard claim",
     wargame: "Predict the future",
@@ -150,24 +150,24 @@ export const products: Product[] = [
     fullName: "Linear Horizon Platform",
     tier: "foundation",
     domain: "Infrastructure",
-    category: "Agentic Infrastructure",
+    category: "AI operating system",
     verb: "Act",
     intelligence: "Operational intelligence",
-    framing: "Agents that act",
+    framing: "An operating system for AI",
     shortDescription:
-      "An agent harness and runtime for deploying teams of AI agents around the work your organisation already does.",
-    landingLine: "Build and run agentic systems.",
-    headline: "Agents that can actually do the work.",
+      "Agents, tools, memory, permissions and controls that let AI operate around the work your organisation already does.",
+    landingLine: "An operating system for AI.",
+    headline: "Platform is an operating system for AI.",
     support:
-      "Linear Horizon Platform orchestrates teams of agents, tools, RAG pipelines and workflows around the processes you already run — with permission boundaries, escalation and production controls.",
+      "Linear Horizon Platform is an operating system for AI. It orchestrates teams of agents, tools, RAG pipelines and workflows around the processes you already run — with permission boundaries, escalation and production controls.",
     overview: [
-      "Platform is an agent harness and runtime. It provides the reusable infrastructure needed to put specialist agent teams into organisational work: orchestration, tools, workflows, retrieval, memory, routing, integration and the operational controls that decide whether a system can leave a prototype.",
+      "Platform is an operating system for AI. It provides the reusable infrastructure needed to put specialist agent teams into organisational work: orchestration, tools, workflows, retrieval, memory, routing, integration and the operational controls that decide whether a system can leave a prototype.",
       "A chatbot can be one interface to Platform, but the product is broader than chat. Its function is to let agents operate inside your organisation with access to the appropriate tools, knowledge and workflows — and to stop, ask or escalate when the work exceeds a defined boundary.",
-      "You can build customer support, knowledge assistants and operational agents on a common production-ready foundation, adapted to the systems you already run rather than replacing them.",
+      "You can build customer support, knowledge assistants and operational agents on a common production-ready system, adapted to the systems you already run rather than replacing them.",
     ],
-    seoTitle: "Platform | Agentic Infrastructure | Linear Horizon",
+    seoTitle: "Platform | An operating system for AI | Linear Horizon",
     seoDescription:
-      "Linear Horizon Platform is an agent harness and runtime for deploying teams of AI agents around organisational work — with tools, RAG, workflows, escalation and production controls.",
+      "Linear Horizon Platform is an operating system for AI — teams of agents around organisational work, with tools, RAG, workflows, escalation and production controls.",
     primaryCta: {
       label: "Discuss a deployment",
       href: "/contact?interest=platform",

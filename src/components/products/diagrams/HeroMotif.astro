@@ -1,5 +1,6 @@
 ---
 import GridFrame from '../../diagrams/GridFrame.astro';
+import PlatformOperatingSystem from './PlatformOperatingSystem.astro';
 import type { ProductSlug } from '../../../data/products';
 
 interface Props {
@@ -46,23 +47,7 @@ const copy = {
 
 <GridFrame class="h-full bg-paper p-6 md:p-8">
   <p class="font-mono text-[11px] tracking-[0.18em] text-cobalt">{copy.kicker}</p>
-  {
-    slug === 'platform' && (
-      <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">
-        <rect x="8" y="8" width="48" height="22" stroke="currentColor" stroke-opacity="0.55" />
-        <rect x="66" y="8" width="48" height="22" stroke="currentColor" stroke-opacity="0.55" />
-        <rect x="124" y="8" width="48" height="22" stroke="currentColor" stroke-opacity="0.55" />
-        <path d="M32 30v12h90V30" stroke="currentColor" stroke-opacity="0.45" />
-        <rect x="74" y="42" width="92" height="22" stroke="currentColor" />
-        <path d="M120 64v10" stroke="currentColor" stroke-opacity="0.45" />
-        <rect x="16" y="74" width="44" height="20" stroke="#145BFF" />
-        <rect x="70" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
-        <rect x="124" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
-        <rect x="178" y="74" width="44" height="20" stroke="currentColor" stroke-opacity="0.55" />
-        <rect x="118" y="50" width="4" height="4" fill="#145BFF" />
-      </svg>
-    )
-  }
+  {slug === 'platform' && <PlatformOperatingSystem />}
   {
     slug === 'stack' && (
       <svg class="mt-6 h-32 w-full text-ink" viewBox="0 0 240 110" fill="none" aria-hidden="true">

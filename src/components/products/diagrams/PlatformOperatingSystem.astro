@@ -1,0 +1,129 @@
+<div class="platform-os mx-auto mt-8 w-full max-w-md">
+  <div class="grid grid-cols-3 text-center">
+    <p class="font-mono text-[11px] tracking-[0.06em] whitespace-nowrap text-muted">Event</p>
+    <p class="font-mono text-[11px] tracking-[0.06em] whitespace-nowrap text-muted">Request</p>
+    <p class="font-mono text-[11px] tracking-[0.06em] whitespace-nowrap text-muted">Upstream</p>
+  </div>
+
+  <div class="relative mt-3">
+    <svg
+      class="block h-auto w-full overflow-visible text-ink"
+      viewBox="0 0 300 196"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        class="platform-os__line platform-os__draw platform-os__draw--out"
+        pathLength="1"
+        d="M150 156H50V172"
+      />
+      <path
+        class="platform-os__line platform-os__draw platform-os__draw--out"
+        pathLength="1"
+        d="M150 156H250V172"
+      />
+      <path class="platform-os__line platform-os__draw" pathLength="1" d="M50 16V34H150" />
+      <path
+        class="platform-os__line platform-os__draw"
+        style="--delay: 40ms"
+        pathLength="1"
+        d="M250 16V34H150"
+      />
+      <path
+        class="platform-os__line platform-os__draw"
+        style="--delay: 80ms"
+        pathLength="1"
+        d="M150 16V62"
+      />
+      <path
+        class="platform-os__line platform-os__draw platform-os__draw--out text-horizon-500"
+        pathLength="1"
+        d="M150 134V172"
+      />
+      <circle class="platform-os__ring" cx="150" cy="98" r="36" />
+      <circle cx="50" cy="8" r="4" fill="currentColor" />
+      <circle cx="150" cy="8" r="4" fill="currentColor" />
+      <circle cx="250" cy="8" r="4" fill="currentColor" />
+      <rect class="platform-os__square" x="46" y="176" width="8" height="8" />
+      <rect
+        class="platform-os__square platform-os__square--active text-horizon-500"
+        x="146"
+        y="176"
+        width="8"
+        height="8"
+      />
+      <rect class="platform-os__square" x="246" y="176" width="8" height="8" />
+    </svg>
+    <p
+      class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center font-mono text-[11px] leading-tight tracking-[0.04em] text-ink"
+    >
+      Agent<br />team
+    </p>
+  </div>
+
+  <div class="platform-os__outcomes mt-3 grid grid-cols-3 text-center">
+    <p class="font-mono text-[11px] tracking-[0.06em] whitespace-nowrap text-muted">Tools</p>
+    <p class="font-mono text-[11px] tracking-[0.06em] whitespace-nowrap text-muted">Knowledge</p>
+    <p class="font-mono text-[11px] tracking-[0.06em] whitespace-nowrap text-muted">Escalation</p>
+  </div>
+</div>
+
+<style>
+  .platform-os__line {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    fill: none;
+  }
+
+  .platform-os__ring {
+    fill: var(--color-paper);
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .platform-os__square {
+    fill: currentColor;
+  }
+
+  .platform-os__draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .platform-os__draw {
+      animation: platform-os-draw 640ms var(--ease-brand) both;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    .platform-os__draw--out {
+      animation-duration: 520ms;
+      animation-delay: 560ms;
+    }
+
+    .platform-os__square,
+    .platform-os__outcomes {
+      animation: platform-os-in 220ms var(--ease-brand) 1000ms both;
+    }
+  }
+
+  @keyframes platform-os-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes platform-os-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
